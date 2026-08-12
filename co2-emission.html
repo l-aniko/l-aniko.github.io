@@ -240,7 +240,8 @@
       margin-left:202px;
     }
 
-    /* Smaller documentation/process images */
+    /* STEP 01 — DATASET */
+
     .process-image{
       display:block;
       width:min(100%,760px);
@@ -250,9 +251,16 @@
       background:white;
     }
 
-    /* Larger featured visualization */
+    /* STEP 02 — TABLEAU EXPLORATION */
+
+    .process-image.exploration{
+      width:min(100%,640px);
+    }
+
+    /* STEP 03 — VISUAL SYSTEM */
+
     .process-image.featured{
-      width:min(100%,980px);
+      width:min(100%,800px);
     }
 
     .image-caption{
@@ -608,7 +616,7 @@
           <div class="process-image-wrap">
 
             <img
-              class="process-image"
+              class="process-image exploration"
               src="co2_2.JPG"
               alt="Tableau development process for the CO2 emissions visualization"
             />
