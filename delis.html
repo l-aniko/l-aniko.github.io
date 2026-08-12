@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Deli’s Vegan Ice Cream — brand identity and packaging student project by Anikó Lukácsovics." />
+  <title>Deli’s Vegan Ice Cream — Anikó Lukácsovics</title>
+
+  <style>
+    :root{
+      --paper:#f4f1ea;
+      --ink:#151515;
+      --muted:#6e6b66;
+      --line:#c9c5bd;
+      --red:#d83a2e;
+      --pink:#f1cdd8;
+      --wine:#8f123f;
+      --cream:#e6d7bd;
+      --blue:#d9d9e7;
+      --max:1320px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        linear-gradient(rgba(21,21,21,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21,21,21,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size:32px 32px;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.45;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .shell{
+      width:min(calc(100% - 48px),var(--max));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(244,241,234,.84);
+      border-bottom:1px solid rgba(21,21,21,.14);
+    }
+
+    .nav{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .back{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* HERO */
+
+    .project-hero{
+      padding:82px 0 64px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .project-kicker{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .project-hero-grid{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:64px;
+      align-items:end;
+    }
+
+    h1{
+      margin:0;
+      max-width:930px;
+      font-size:clamp(58px,8vw,118px);
+      line-height:.86;
+      letter-spacing:-.06em;
+      font-weight:800;
+    }
+
+    h1 em{
+      color:var(--wine);
+      font-style:normal;
+    }
+
+    .hero-subtitle{
+      margin:26px 0 0;
+      max-width:760px;
+      font-size:20px;
+      line-height:1.45;
+      color:#373532;
+    }
+
+    .meta{
+      display:grid;
+      gap:18px;
+      align-self:end;
+      padding-bottom:7px;
+    }
+
+    .meta-row{
+      padding-top:12px;
+      border-top:1px solid var(--line);
+    }
+
+    .meta-label{
+      display:block;
+      margin-bottom:4px;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .meta-value{
+      font-size:15px;
+    }
+
+    .label{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* HERO IMAGE */
+
+    .hero-image-section{
+      padding:70px 0 88px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero-image{
+      display:block;
+      width:100%;
+      height:auto;
+      border:1px solid rgba(21,21,21,.10);
+      box-shadow:0 24px 60px rgba(21,21,21,.07);
+    }
+
+    /* BRAND CONCEPT */
+
+    .concept{
+      padding:82px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:.55fr 1.45fr;
+      gap:64px;
+    }
+
+    .copy{
+      max-width:760px;
+    }
+
+    .copy h2{
+      margin:0 0 24px;
+      font-size:clamp(38px,5vw,68px);
+      line-height:.96;
+      letter-spacing:-.045em;
+    }
+
+    .copy p{
+      margin:0 0 24px;
+      font-size:clamp(17px,1.35vw,21px);
+      line-height:1.55;
+      letter-spacing:-.01em;
+    }
+
+    /* PACKAGING SYSTEM */
+
+    .packaging{
+      padding:86px 0 92px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-head{
+      display:grid;
+      grid-template-columns:170px 1fr;
+      gap:32px;
+      margin-bottom:46px;
+    }
+
+    .section-copy{
+      max-width:760px;
+    }
+
+    .section-copy h2{
+      margin:0 0 18px;
+      font-size:clamp(40px,5vw,72px);
+      line-height:.95;
+      letter-spacing:-.045em;
+    }
+
+    .section-copy p{
+      margin:0;
+      max-width:720px;
+      font-size:18px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    .flavour-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .flavour-card{
+      border:1px solid rgba(21,21,21,.10);
+      background:white;
+      overflow:hidden;
+    }
+
+    .flavour-card img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .flavour-caption{
+      margin-top:10px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* MOCKUPS */
+
+    .mockups{
+      padding:86px 0 94px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .mockup-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .mockup{
+      border:1px solid rgba(21,21,21,.10);
+      background:white;
+      box-shadow:0 20px 50px rgba(21,21,21,.05);
+    }
+
+    .mockup img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    /* SOCIAL */
+
+    .social{
+      padding:86px 0 96px;
+    }
+
+    .social-grid{
+      display:grid;
+      grid-template-columns:170px 1fr;
+      gap:32px;
+      align-items:start;
+    }
+
+    .social-copy{
+      max-width:760px;
+      margin-bottom:38px;
+    }
+
+    .social-copy h2{
+      margin:0 0 18px;
+      font-size:clamp(40px,5vw,72px);
+      line-height:.95;
+      letter-spacing:-.045em;
+    }
+
+    .social-copy p{
+      margin:0;
+      font-size:18px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    .social-image{
+      display:block;
+      width:min(100%,920px);
+      height:auto;
+      border:1px solid rgba(21,21,21,.10);
+      box-shadow:0 22px 55px rgba(21,21,21,.06);
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:44px 0 72px;
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:32px;
+      align-items:flex-end;
+      border-top:1px solid var(--ink);
+      padding-top:24px;
+    }
+
+    .footer-title{
+      font-size:clamp(34px,5vw,68px);
+      letter-spacing:-.045em;
+      line-height:.95;
+      font-weight:750;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      border-bottom:1px solid var(--ink);
+      padding-bottom:3px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:920px){
+      .shell{
+        width:min(calc(100% - 30px),var(--max));
+      }
+
+      .nav{
+        height:auto;
+        padding:18px 0;
+        align-items:flex-start;
+      }
+
+      .project-hero-grid,
+      .two-col,
+      .section-head,
+      .social-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .flavour-grid{
+        grid-template-columns:1fr;
+      }
+
+      .mockup-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-grid{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media(max-width:560px){
+      .brand{
+        font-size:10px;
+      }
+
+      .back{
+        font-size:9px;
+      }
+
+      h1{
+        font-size:52px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="shell nav">
+
+      <a class="brand" href="index.html">
+        ANIKÓ LUKÁCSOVICS / PORTFOLIO
+      </a>
+
+      <a class="back" href="index.html#visual">
+        ← Back to Visual Communication
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="project-hero">
+      <div class="shell">
+
+        <div class="project-kicker">
+          01 / Visual Communication
+        </div>
+
+        <div class="project-hero-grid">
+
+          <div>
+
+            <h1>
+              Deli’s<br/>
+              <em>Vegan Ice Cream</em>
+            </h1>
+
+            <p class="hero-subtitle">
+              Brand identity & packaging design.
+            </p>
+
+          </div>
+
+          <div class="meta">
+
+            <div class="meta-row">
+              <span class="meta-label">Project</span>
+              <span class="meta-value">Student project</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Tools</span>
+              <span class="meta-value">
+                Adobe InDesign · Adobe Photoshop
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Focus</span>
+              <span class="meta-value">
+                Brand identity · Packaging · Typography · Art direction
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- HERO IMAGE -->
+
+    <section class="hero-image-section">
+      <div class="shell">
+
+        <img
+          class="hero-image"
+          src="delis-hero.jpg"
+          alt="Deli’s vegan ice cream Strawberry packaging mockup"
+        />
+
+      </div>
+    </section>
+
+
+    <!-- BRAND CONCEPT -->
+
+    <section class="concept">
+      <div class="shell two-col">
+
+        <div class="label">
+          01 / Brand Concept
+        </div>
+
+        <div class="copy">
+
+          <h2>
+            Building a brand from the ground up.
+          </h2>
+
+          <p>
+            A student project developed from a blank brief: creating a vegan ice cream brand from the ground up, including its name, logo, visual identity, packaging and social media direction.
+          </p>
+
+          <p>
+            The concept combines an elegant editorial typographic style with a playful, contemporary food identity. The logo and oversized flavour names establish a visual system that feels distinctive while remaining flexible across different products.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PACKAGING SYSTEM -->
+
+    <section class="packaging">
+      <div class="shell">
+
+        <div class="section-head">
+
+          <div class="label">
+            02 / Packaging System
+          </div>
+
+          <div class="section-copy">
+
+            <h2>
+              Typography becomes the packaging.
+            </h2>
+
+            <p>
+              Each flavour uses the same underlying structure: a restrained logo paired with an oversized typographic treatment that wraps around the container. Colour differentiates the flavours while the scale and cropping of the letterforms create a consistent visual identity.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="flavour-grid">
+
+          <div>
+
+            <div class="flavour-card">
+              <img
+                src="delis-strawberry.jpg"
+                alt="Deli’s Strawberry packaging design"
+              />
+            </div>
+
+            <div class="flavour-caption">
+              Strawberry
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="flavour-card">
+              <img
+                src="delis-chocolate.jpg"
+                alt="Deli’s Chocolate packaging design"
+              />
+            </div>
+
+            <div class="flavour-caption">
+              Chocolate
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="flavour-card">
+              <img
+                src="delis-blue.jpg"
+                alt="Deli’s Blue packaging design"
+              />
+            </div>
+
+            <div class="flavour-caption">
+              Blue
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MOCKUPS -->
+
+    <section class="mockups">
+      <div class="shell">
+
+        <div class="section-head">
+
+          <div class="label">
+            03 / From Design to Object
+          </div>
+
+          <div class="section-copy">
+
+            <h2>
+              Designed to work in three dimensions.
+            </h2>
+
+            <p>
+              The packaging system was tested on three-dimensional mockups to see how the oversized typography behaves as it wraps around the container. Cropping becomes part of the identity, allowing the design to change with the viewing angle while remaining recognizable.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="mockup-grid">
+
+          <div class="mockup">
+            <img
+              src="delis-chocolate-mockup.jpg"
+              alt="Deli’s Chocolate vegan ice cream packaging mockup"
+            />
+          </div>
+
+          <div class="mockup">
+            <img
+              src="delis-blue-mockup.jpg"
+              alt="Deli’s Blue vegan ice cream packaging mockup"
+            />
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SOCIAL -->
+
+    <section class="social">
+      <div class="shell social-grid">
+
+        <div class="label">
+          04 / Visual Direction
+        </div>
+
+        <div>
+
+          <div class="social-copy">
+
+            <h2>
+              Extending the identity beyond packaging.
+            </h2>
+
+            <p>
+              The visual language was also explored as a social media direction, combining product imagery, lifestyle photography, typography and flavour-specific colours into a flexible branded feed.
+            </p>
+
+          </div>
+
+          <img
+            class="social-image"
+            src="delis-social.jpg"
+            alt="Deli’s vegan ice cream Instagram visual direction"
+          />
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="shell footer-grid">
+
+      <div>
+
+        <div class="label" style="margin-bottom:12px">
+          Contact
+        </div>
+
+        <div class="footer-title">
+          Let’s make complex<br/>
+          things clearer.
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a
+          href="https://www.linkedin.com/in/anikolukacsovics"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a href="mailto:aniko.lukacsovics@gmail.com">
+          Email
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
