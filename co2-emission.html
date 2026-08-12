@@ -240,13 +240,19 @@
       margin-left:202px;
     }
 
+    /* Smaller documentation/process images */
     .process-image{
       display:block;
-      width:min(100%,1040px);
+      width:min(100%,760px);
       height:auto;
       border:1px solid rgba(21,21,21,.12);
       box-shadow:0 20px 50px rgba(21,21,21,.06);
       background:white;
+    }
+
+    /* Larger featured visualization */
+    .process-image.featured{
+      width:min(100%,980px);
     }
 
     .image-caption{
@@ -643,7 +649,7 @@
           <div class="process-image-wrap">
 
             <img
-              class="process-image"
+              class="process-image featured"
               src="co2_3.JPG"
               alt="Tableau CO2 emissions and population visualization"
             />
