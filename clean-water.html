@@ -167,15 +167,19 @@
     }
 
     .concept-copy{
-      max-width:850px;
+      max-width:760px;
     }
 
-    .concept-copy p{
-      margin:0 0 26px;
-      max-width:780px;
-      font-size:clamp(19px,2vw,27px);
-      line-height:1.36;
-      letter-spacing:-.015em;
+    .concept-copy > p{
+      margin:0 0 24px;
+      max-width:760px;
+      font-size:clamp(17px,1.35vw,21px);
+      line-height:1.55;
+      letter-spacing:-.01em;
+    }
+
+    .concept-copy > p:last-of-type{
+      margin-bottom:0;
     }
 
     .translation{
@@ -186,21 +190,19 @@
     }
 
     .translation-hu{
-      margin:0 0 10px !important;
-      max-width:none !important;
-      font-size:clamp(32px,4.4vw,62px) !important;
-      line-height:1 !important;
-      letter-spacing:-.045em !important;
+      margin:0 0 10px;
+      font-size:clamp(32px,4.4vw,62px);
+      line-height:1;
+      letter-spacing:-.045em;
       font-weight:750;
     }
 
     .translation-en{
-      margin:0 !important;
-      max-width:none !important;
+      margin:0;
       color:var(--red);
-      font-size:18px !important;
-      line-height:1.4 !important;
-      letter-spacing:0 !important;
+      font-size:18px;
+      line-height:1.4;
+      letter-spacing:0;
     }
 
     /* POSTER */
@@ -349,6 +351,10 @@
         gap:22px;
       }
 
+      .concept-copy{
+        max-width:720px;
+      }
+
       .footer-grid{
         align-items:flex-start;
         flex-direction:column;
@@ -372,8 +378,13 @@
         font-size:58px;
       }
 
+      .concept-copy > p{
+        font-size:17px;
+        line-height:1.55;
+      }
+
       .translation-hu{
-        font-size:36px !important;
+        font-size:36px;
       }
     }
   </style>
@@ -383,8 +394,13 @@
 
   <header>
     <div class="shell nav">
-      <a class="brand" href="index.html">ANIKÓ LUKÁCSOVICS / PORTFOLIO</a>
-      <a class="back" href="index.html#visual">← Back to Visual Communication</a>
+      <a class="brand" href="index.html">
+        ANIKÓ LUKÁCSOVICS / PORTFOLIO
+      </a>
+
+      <a class="back" href="index.html#visual">
+        ← Back to Visual Communication
+      </a>
     </div>
   </header>
 
@@ -416,12 +432,16 @@
 
             <div class="meta-row">
               <span class="meta-label">Tools</span>
-              <span class="meta-value">Adobe InDesign · After Effects</span>
+              <span class="meta-value">
+                Adobe InDesign · After Effects
+              </span>
             </div>
 
             <div class="meta-row">
               <span class="meta-label">Focus</span>
-              <span class="meta-value">Environmental awareness · Typography</span>
+              <span class="meta-value">
+                Environmental awareness · Typography
+              </span>
             </div>
 
           </div>
@@ -451,13 +471,11 @@
           </p>
 
           <p>
-            The poster was created for a Hungarian audience. Its central question,
-            <strong>“Tiszta víz — lesz elég?”</strong>, translates as
-            <strong>“Clean water — will there be enough?”</strong>
-            The question draws attention to the future availability of one of our most essential resources.
+            The poster was created for a Hungarian audience. Its central question, “Tiszta víz — lesz elég?”, translates as “Clean water — will there be enough?” The question draws attention to the future availability of one of our most essential resources.
           </p>
 
           <div class="translation">
+
             <p class="translation-hu">
               Tiszta víz — lesz elég?
             </p>
@@ -465,6 +483,7 @@
             <p class="translation-en">
               Clean water — will there be enough?
             </p>
+
           </div>
 
         </div>
@@ -484,11 +503,13 @@
         <div>
 
           <div class="poster-image-wrap">
+
             <img
               class="poster-image"
               src="clean-water-thumbnail.jpg"
               alt="Clean Water typographic environmental awareness poster by Anikó Lukácsovics"
             />
+
           </div>
 
           <a
@@ -549,6 +570,7 @@
     <div class="shell footer-grid">
 
       <div>
+
         <div class="label" style="margin-bottom:12px">
           Contact
         </div>
@@ -557,6 +579,7 @@
           Let’s make complex<br/>
           things clearer.
         </div>
+
       </div>
 
       <div class="footer-links">
