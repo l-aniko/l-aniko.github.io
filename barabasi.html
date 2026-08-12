@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BarabásiLab — Hidden Patterns editorial design student project by Anikó Lukácsovics." />
+  <title>BarabásiLab — Anikó Lukácsovics</title>
+
+  <style>
+    :root{
+      --paper:#f4f1ea;
+      --ink:#151515;
+      --muted:#6e6b66;
+      --line:#c9c5bd;
+      --red:#d83a2e;
+      --max:1320px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        linear-gradient(rgba(21,21,21,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21,21,21,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size:32px 32px;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.45;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .shell{
+      width:min(calc(100% - 48px),var(--max));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(244,241,234,.84);
+      border-bottom:1px solid rgba(21,21,21,.14);
+    }
+
+    .nav{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .back{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* HERO */
+
+    .project-hero{
+      padding:82px 0 64px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .project-kicker{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .project-hero-grid{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:64px;
+      align-items:end;
+    }
+
+    h1{
+      margin:0;
+      max-width:930px;
+      font-size:clamp(60px,8vw,120px);
+      line-height:.86;
+      letter-spacing:-.06em;
+      font-weight:800;
+    }
+
+    h1 em{
+      color:var(--red);
+      font-style:normal;
+    }
+
+    .hero-subtitle{
+      margin:26px 0 0;
+      max-width:760px;
+      font-size:20px;
+      line-height:1.45;
+      color:#373532;
+    }
+
+    .meta{
+      display:grid;
+      gap:18px;
+      align-self:end;
+      padding-bottom:7px;
+    }
+
+    .meta-row{
+      padding-top:12px;
+      border-top:1px solid var(--line);
+    }
+
+    .meta-label{
+      display:block;
+      margin-bottom:4px;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .meta-value{
+      font-size:15px;
+    }
+
+    .label{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* CONCEPT */
+
+    .concept{
+      padding:76px 0 84px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:.55fr 1.45fr;
+      gap:64px;
+    }
+
+    .copy{
+      max-width:760px;
+    }
+
+    .copy h2{
+      margin:0 0 24px;
+      font-size:clamp(38px,5vw,68px);
+      line-height:.96;
+      letter-spacing:-.045em;
+    }
+
+    .copy p{
+      margin:0 0 24px;
+      max-width:760px;
+      font-size:clamp(17px,1.35vw,21px);
+      line-height:1.55;
+      letter-spacing:-.01em;
+    }
+
+    /* TYPOGRAPHY */
+
+    .typography{
+      padding:84px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .statement{
+      margin:46px 0 0;
+      padding:28px 0;
+      border-top:1px solid var(--ink);
+      border-bottom:1px solid var(--ink);
+      max-width:760px;
+      font-size:clamp(26px,3vw,40px);
+      line-height:1.15;
+      letter-spacing:-.03em;
+      font-weight:650;
+    }
+
+    /* VISUAL SYSTEM */
+
+    .visual-system{
+      padding:84px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .system-note{
+      margin-top:28px;
+      max-width:760px;
+      font-size:18px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    /* FINAL DESIGN */
+
+    .final{
+      padding:88px 0 92px;
+    }
+
+    .final-head{
+      display:grid;
+      grid-template-columns:170px 1fr;
+      gap:32px;
+      margin-bottom:48px;
+    }
+
+    .final-copy{
+      max-width:760px;
+    }
+
+    .final-copy h2{
+      margin:0 0 18px;
+      font-size:clamp(40px,5vw,72px);
+      line-height:.95;
+      letter-spacing:-.045em;
+    }
+
+    .final-copy p{
+      margin:0;
+      max-width:720px;
+      font-size:18px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    .pages{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .page-card{
+      background:#fff;
+      border:1px solid rgba(21,21,21,.12);
+      box-shadow:0 22px 55px rgba(21,21,21,.07);
+    }
+
+    .page-card img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .page-caption{
+      margin-top:12px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .pdf-link{
+      display:inline-block;
+      margin-top:28px;
+      padding-bottom:4px;
+      border-bottom:1px solid var(--ink);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* NOTE */
+
+    .note{
+      padding:72px 0 84px;
+    }
+
+    .note-box{
+      max-width:760px;
+    }
+
+    .note-box p{
+      margin:0 0 20px;
+      font-size:17px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:44px 0 72px;
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:32px;
+      align-items:flex-end;
+      border-top:1px solid var(--ink);
+      padding-top:24px;
+    }
+
+    .footer-title{
+      font-size:clamp(34px,5vw,68px);
+      letter-spacing:-.045em;
+      line-height:.95;
+      font-weight:750;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      border-bottom:1px solid var(--ink);
+      padding-bottom:3px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:920px){
+      .shell{
+        width:min(calc(100% - 30px),var(--max));
+      }
+
+      .nav{
+        height:auto;
+        padding:18px 0;
+        align-items:flex-start;
+      }
+
+      .project-hero-grid,
+      .two-col,
+      .final-head{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .pages{
+        grid-template-columns:1fr;
+      }
+
+      .footer-grid{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media(max-width:560px){
+      .brand{
+        font-size:10px;
+      }
+
+      .back{
+        font-size:9px;
+      }
+
+      h1{
+        font-size:54px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="index.html">
+        ANIKÓ LUKÁCSOVICS / PORTFOLIO
+      </a>
+
+      <a class="back" href="index.html#visual">
+        ← Back to Visual Communication
+      </a>
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="project-hero">
+      <div class="shell">
+
+        <div class="project-kicker">
+          01 / Visual Communication
+        </div>
+
+        <div class="project-hero-grid">
+
+          <div>
+            <h1>
+              BarabásiLab<br/>
+              <em>Hidden Patterns</em>
+            </h1>
+
+            <p class="hero-subtitle">
+              Editorial design concept for a museum exhibition exploring the visual language of networks.
+            </p>
+          </div>
+
+          <div class="meta">
+
+            <div class="meta-row">
+              <span class="meta-label">Project</span>
+              <span class="meta-value">Student project</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Tools</span>
+              <span class="meta-value">Adobe InDesign</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Focus</span>
+              <span class="meta-value">
+                Editorial design · Typography · Visual systems
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONCEPT -->
+
+    <section class="concept">
+      <div class="shell two-col">
+
+        <div class="label">
+          01 / Concept
+        </div>
+
+        <div class="copy">
+
+          <h2>
+            Making hidden connections visible.
+          </h2>
+
+          <p>
+            A student project based on the BarabásiLab “Hidden Patterns” exhibition. The brief was to develop a two-page editorial piece that translates the idea of hidden connections and recurring patterns into a coherent visual system.
+          </p>
+
+          <p>
+            The exhibition explores how network visualization can reveal relationships and recurring structures that are otherwise difficult to see. The design translates this idea into a visual language built from interconnected lines, repetition and subtle interruptions of red.
+          </p>
+
+          <p>
+            Rather than illustrating networks literally, the graphic system becomes part of the page itself — moving between background texture, structure and visual emphasis.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- TYPOGRAPHY -->
+
+    <section class="typography">
+      <div class="shell two-col">
+
+        <div class="label">
+          02 / Typography
+        </div>
+
+        <div class="copy">
+
+          <h2>
+            Designing for clarity.
+          </h2>
+
+          <p>
+            The publication combines expressive network graphics with relatively dense informational content. Careful attention was given to text flow, spacing and typographic rhythm to maintain a clean, balanced reading experience.
+          </p>
+
+          <p>
+            A restrained typographic hierarchy allows the exhibition information to remain readable while the surrounding visual system carries the conceptual character of the project.
+          </p>
+
+          <div class="statement">
+            Typography, spacing and hierarchy were treated as part of the visual system — not simply as containers for content.
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- VISUAL SYSTEM -->
+
+    <section class="visual-system">
+      <div class="shell two-col">
+
+        <div class="label">
+          03 / Visual System
+        </div>
+
+        <div class="copy">
+
+          <h2>
+            From network structure to graphic language.
+          </h2>
+
+          <p>
+            Fine repeated lines create a layered network that shifts between order and complexity. Black establishes the primary structure, while small red connections introduce rhythm and visual landmarks.
+          </p>
+
+          <p>
+            The same system is carried across both pages at different scales and densities, creating continuity without repeating the same composition.
+          </p>
+
+          <div class="system-note">
+            The original publication was created for a Hungarian-speaking museum audience, so the editorial content remains in Hungarian.
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FINAL DESIGN -->
+
+    <section class="final">
+      <div class="shell">
+
+        <div class="final-head">
+
+          <div class="label">
+            Final design
+          </div>
+
+          <div class="final-copy">
+
+            <h2>
+              A two-page editorial system.
+            </h2>
+
+            <p>
+              The final student project brings typography, information hierarchy and network-inspired graphics into one coherent editorial system. The exhibition dates — 11 October 2020 to 17 January 2021 — are integrated directly into the composition as functional graphic elements.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="pages">
+
+          <div>
+            <div class="page-card">
+              <img
+                src="barabasi-page-1.jpg"
+                alt="BarabásiLab Hidden Patterns editorial design — page one"
+              />
+            </div>
+
+            <div class="page-caption">
+              Page 01 — Exhibition information and network graphic
+            </div>
+          </div>
+
+
+          <div>
+            <div class="page-card">
+              <img
+                src="barabasi-page-2.jpg"
+                alt="BarabásiLab Hidden Patterns editorial design — page two"
+              />
+            </div>
+
+            <div class="page-caption">
+              Page 02 — Editorial content and exhibition period
+            </div>
+          </div>
+
+        </div>
+
+
+        <a
+          class="pdf-link"
+          href="BarabasiLab.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View full PDF ↗
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- NOTE -->
+
+    <section class="note">
+      <div class="shell two-col">
+
+        <div class="label">
+          Context
+        </div>
+
+        <div class="note-box">
+
+          <p>
+            “Hidden Patterns” presents network research and visualization connected to BarabásiLab and its collaborative work across science, art and design.
+          </p>
+
+          <p>
+            This portfolio piece is a student design exercise based on that exhibition and was not an official commission or publication for BarabásiLab.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="shell footer-grid">
+
+      <div>
+
+        <div class="label" style="margin-bottom:12px">
+          Contact
+        </div>
+
+        <div class="footer-title">
+          Let’s make complex<br/>
+          things clearer.
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a
+          href="https://www.linkedin.com/in/anikolukacsovics"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a href="mailto:aniko.lukacsovics@gmail.com">
+          Email
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
