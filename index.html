@@ -97,6 +97,38 @@
     .arrow{font-size:24px;transition:transform .22s ease}
     .project:hover .arrow{transform:translateX(5px)}
     .placeholder{border-style:dashed;opacity:.72}
+    .visual-project{
+  position:relative;
+  overflow:hidden;
+  min-height:150px;
+}
+
+.visual-project::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:var(--project-image);
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity .35s ease;
+}
+
+.visual-project .project-content,
+.visual-project .arrow{
+  position:relative;
+  z-index:1;
+  transition:opacity .25s ease;
+}
+
+.visual-project:hover::before{
+  opacity:1;
+}
+
+.visual-project:hover .project-content,
+.visual-project:hover .arrow{
+  opacity:0;
+}
 
     .section-card[data-tone="indigo"]::after,
     .section-card[data-tone="red"]::after{
@@ -188,9 +220,18 @@
             <p class="section-desc">This is how I learned how to think visually. My background in visual communication shaped how I approach hierarchy, composition and information today - a foundation that later evolved into my approach to data visualization.</p>
           </div>
           <div class="project-stack">
-            <a class="project placeholder" href="#" onclick="return false;">
-              <div><h3>Project title</h3><p>Infographic · Editorial · Adobe</p></div><span class="arrow">↗</span>
-            </a>
+<a class="project visual-project"
+   href="#"
+   onclick="return false;"
+   style="--project-image:url('clean-water-thumbnail.jpg')">
+
+  <div class="project-content">
+    <h3>Clean Water — Typographic Poster</h3>
+    <p>Environmental awareness · Adobe InDesign · After Effects</p>
+  </div>
+
+  <span class="arrow">↗</span>
+</a>
             <a class="project placeholder" href="#" onclick="return false;">
               <div><h3>Project title</h3><p>Poster · Visual communication</p></div><span class="arrow">↗</span>
             </a>
