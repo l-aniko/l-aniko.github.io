@@ -1,1 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Annual CO₂ Emission — Data Visualization project by Anikó Lukácsovics." />
+  <title>Annual CO₂ Emission — Anikó Lukácsovics</title>
 
+  <style>
+    :root{
+      --paper:#f4f1ea;
+      --ink:#151515;
+      --muted:#6e6b66;
+      --line:#c9c5bd;
+      --red:#d83a2e;
+      --card:#faf8f3;
+      --max:1320px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        linear-gradient(rgba(21,21,21,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21,21,21,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size:32px 32px;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.45;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .shell{
+      width:min(calc(100% - 48px),var(--max));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(244,241,234,.84);
+      border-bottom:1px solid rgba(21,21,21,.14);
+    }
+
+    .nav{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .back{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      color:var(--ink);
+    }
+
+    /* HERO */
+
+    .project-hero{
+      padding:82px 0 64px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .project-kicker{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .project-hero-grid{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:64px;
+      align-items:end;
+    }
+
+    h1{
+      margin:0;
+      max-width:930px;
+      font-size:clamp(64px,8.5vw,126px);
+      line-height:.86;
+      letter-spacing:-.06em;
+      font-weight:800;
+    }
+
+    h1 em{
+      color:var(--red);
+      font-style:normal;
+    }
+
+    .meta{
+      display:grid;
+      gap:18px;
+      align-self:end;
+      padding-bottom:7px;
+    }
+
+    .meta-row{
+      padding-top:12px;
+      border-top:1px solid var(--line);
+    }
+
+    .meta-label{
+      display:block;
+      margin-bottom:4px;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .meta-value{
+      font-size:15px;
+    }
+
+    /* SHARED */
+
+    .label{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* CONCEPT */
+
+    .concept{
+      padding:70px 0 82px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .concept-grid{
+      display:grid;
+      grid-template-columns:.55fr 1.45fr;
+      gap:64px;
+    }
+
+    .concept-copy{
+      max-width:760px;
+    }
+
+    .concept-copy p{
+      margin:0 0 24px;
+      font-size:clamp(17px,1.35vw,21px);
+      line-height:1.55;
+      letter-spacing:-.01em;
+    }
+
+    .concept-copy p:last-child{
+      margin-bottom:0;
+    }
+
+    /* PROCESS */
+
+    .process{
+      padding:88px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .process-step{
+      padding:0 0 82px;
+      margin-bottom:82px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .process-step:last-child{
+      margin-bottom:0;
+      padding-bottom:0;
+      border-bottom:0;
+    }
+
+    .step-head{
+      display:grid;
+      grid-template-columns:170px 1fr;
+      gap:32px;
+      margin-bottom:38px;
+    }
+
+    .step-number{
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--red);
+    }
+
+    .step-copy{
+      max-width:760px;
+    }
+
+    .step-copy h2{
+      margin:0 0 14px;
+      font-size:clamp(34px,4vw,58px);
+      line-height:.98;
+      letter-spacing:-.04em;
+    }
+
+    .step-copy p{
+      margin:0;
+      max-width:720px;
+      font-size:18px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    .process-image-wrap{
+      margin-left:202px;
+    }
+
+    .process-image{
+      display:block;
+      width:min(100%,1040px);
+      height:auto;
+      border:1px solid rgba(21,21,21,.12);
+      box-shadow:0 20px 50px rgba(21,21,21,.06);
+      background:white;
+    }
+
+    .image-caption{
+      margin-top:12px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* FINAL DESIGN */
+
+    .final{
+      padding:88px 0 92px;
+    }
+
+    .final-wrap{
+      display:grid;
+      grid-template-columns:170px 1fr;
+      gap:32px;
+    }
+
+    .final-copy{
+      max-width:760px;
+      margin-bottom:46px;
+    }
+
+    .final-copy h2{
+      margin:0 0 18px;
+      font-size:clamp(40px,5vw,72px);
+      line-height:.95;
+      letter-spacing:-.045em;
+    }
+
+    .final-copy p{
+      margin:0;
+      max-width:720px;
+      font-size:18px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    .final-image-wrap{
+      display:flex;
+      justify-content:center;
+    }
+
+    .final-image{
+      display:block;
+      width:min(100%,900px);
+      height:auto;
+      border:1px solid rgba(21,21,21,.12);
+      box-shadow:0 24px 60px rgba(21,21,21,.08);
+    }
+
+    .view-pdf{
+      display:inline-block;
+      margin-top:22px;
+      padding-bottom:3px;
+      border-bottom:1px solid var(--ink);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* SOURCES */
+
+    .sources{
+      padding:72px 0 82px;
+    }
+
+    .sources-grid{
+      display:grid;
+      grid-template-columns:.55fr 1.45fr;
+      gap:64px;
+    }
+
+    .sources-copy{
+      max-width:760px;
+    }
+
+    .sources-copy p{
+      margin:0 0 12px;
+      font-size:16px;
+      color:#373532;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:44px 0 72px;
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:32px;
+      align-items:flex-end;
+      border-top:1px solid var(--ink);
+      padding-top:24px;
+    }
+
+    .footer-title{
+      font-size:clamp(34px,5vw,68px);
+      letter-spacing:-.045em;
+      line-height:.95;
+      font-weight:750;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .footer-links a{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      border-bottom:1px solid var(--ink);
+      padding-bottom:3px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:920px){
+      .shell{
+        width:min(calc(100% - 30px),var(--max));
+      }
+
+      .nav{
+        height:auto;
+        padding:18px 0;
+        align-items:flex-start;
+      }
+
+      .project-hero{
+        padding:64px 0 48px;
+      }
+
+      .project-hero-grid,
+      .concept-grid,
+      .sources-grid{
+        grid-template-columns:1fr;
+        gap:34px;
+      }
+
+      .step-head,
+      .final-wrap{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+
+      .process-image-wrap{
+        margin-left:0;
+      }
+
+      .footer-grid{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .footer-links{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:560px){
+      .brand{
+        font-size:10px;
+      }
+
+      .back{
+        font-size:9px;
+      }
+
+      h1{
+        font-size:56px;
+      }
+
+      .concept-copy p,
+      .step-copy p,
+      .final-copy p{
+        font-size:17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="shell nav">
+
+      <a class="brand" href="index.html">
+        ANIKÓ LUKÁCSOVICS / PORTFOLIO
+      </a>
+
+      <a class="back" href="index.html#visual">
+        ← Back to Visual Communication
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="project-hero">
+      <div class="shell">
+
+        <div class="project-kicker">
+          01 / Visual Communication
+        </div>
+
+        <div class="project-hero-grid">
+
+          <h1>
+            Annual CO₂<br/>
+            <em>Emission</em>
+          </h1>
+
+          <div class="meta">
+
+            <div class="meta-row">
+              <span class="meta-label">Project</span>
+              <span class="meta-value">Student project</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Tools</span>
+              <span class="meta-value">
+                Excel · Tableau · Adobe InDesign
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Focus</span>
+              <span class="meta-value">
+                Data visualization · Information design
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONCEPT -->
+
+    <section class="concept">
+      <div class="shell concept-grid">
+
+        <div class="label">
+          Concept
+        </div>
+
+        <div class="concept-copy">
+
+          <p>
+            The project explored long-term CO₂ emission patterns across countries and regions, with the goal of turning a large historical dataset into a visual structure that could be read and compared quickly.
+          </p>
+
+          <p>
+            I combined historical emissions data with population information and sector-level context, using Tableau for data exploration and visual development, then Adobe InDesign for the final editorial composition.
+          </p>
+
+          <p>
+            The final piece connects analytical visualization with information design: the data remains central, while hierarchy, typography and composition guide the reader through the story.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROCESS -->
+
+    <section class="process">
+      <div class="shell">
+
+        <!-- STEP 01 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              01 / Data
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Starting from the dataset.
+              </h2>
+
+              <p>
+                The project began with historical country-level CO₂ emission data. The dataset was structured by country, year, emission value and region, providing the basis for the longitudinal comparison.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="process-image-wrap">
+
+            <img
+              class="process-image"
+              src="co2_1.JPG"
+              alt="CO2 emissions dataset used for the project"
+            />
+
+            <div class="image-caption">
+              Historical CO₂ emission dataset
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- STEP 02 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              02 / Exploration
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Building the visual logic in Tableau.
+              </h2>
+
+              <p>
+                Tableau was used to test calculations, structure the time-based comparison and develop a visual system that could represent emission intensity across countries and regions.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="process-image-wrap">
+
+            <img
+              class="process-image"
+              src="co2_2.JPG"
+              alt="Tableau development process for the CO2 emissions visualization"
+            />
+
+            <div class="image-caption">
+              Tableau calculation and visual development
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- STEP 03 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              03 / Visual System
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Connecting emissions with population.
+              </h2>
+
+              <p>
+                The visualization evolved into a combined encoding system: blue intensity represents CO₂ emissions, while circle size and color provide population context. This allowed the same view to communicate both environmental impact and scale.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="process-image-wrap">
+
+            <img
+              class="process-image"
+              src="co2_3.JPG"
+              alt="Tableau CO2 emissions and population visualization"
+            />
+
+            <div class="image-caption">
+              Tableau exploration combining population and emissions
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FINAL DESIGN -->
+
+    <section class="final">
+      <div class="shell final-wrap">
+
+        <div class="label">
+          Final design
+        </div>
+
+        <div>
+
+          <div class="final-copy">
+
+            <h2>
+              From analysis to information design.
+            </h2>
+
+            <p>
+              The Tableau visualizations were brought into Adobe InDesign and developed into a single editorial composition. The final design combines the country-level timeline, population context and sector breakdown within one visual hierarchy.
+            </p>
+
+          </div>
+
+          <div class="final-image-wrap">
+
+            <img
+              class="final-image"
+              src="co2-emission-full.JPG"
+              alt="Annual CO2 Emission final infographic by Anikó Lukácsovics"
+            />
+
+          </div>
+
+          <a
+            class="view-pdf"
+            href="Co2Emission.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View full PDF ↗
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SOURCES -->
+
+    <section class="sources">
+      <div class="shell sources-grid">
+
+        <div class="label">
+          Data sources
+        </div>
+
+        <div class="sources-copy">
+
+          <p>
+            Our World in Data — historical CO₂ emissions data
+          </p>
+
+          <p>
+            Worldometer — population data
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="shell footer-grid">
+
+      <div>
+
+        <div class="label" style="margin-bottom:12px">
+          Contact
+        </div>
+
+        <div class="footer-title">
+          Let’s make complex<br/>
+          things clearer.
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a
+          href="https://www.linkedin.com/in/anikolukacsovics"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a href="mailto:aniko.lukacsovics@gmail.com">
+          Email
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
