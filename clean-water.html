@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JGWVMMJHGT"></script>
+<script>gtag('js',new Date());gtag('config','G-JGWVMMJHGT');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Clean Water — Typographic Poster by Anikó Lukácsovics." />
@@ -386,10 +389,16 @@
         font-size:36px;
       }
     }
-  </style>
+  
+.consent-banner{position:fixed;left:24px;right:24px;bottom:24px;z-index:9999;display:none;max-width:760px;margin:0 auto;padding:20px 22px;background:var(--card);border:1px solid var(--ink);box-shadow:0 12px 40px rgba(21,21,21,.12)}
+.consent-banner.is-visible{display:block}.consent-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}.consent-copy{max-width:470px;font-size:13px;color:#373532}.consent-copy strong{display:block;margin-bottom:5px;color:var(--ink);font-size:14px}.consent-actions{display:flex;gap:10px;flex-shrink:0}.consent-btn{border:1px solid var(--ink);padding:10px 14px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--ink)}.consent-btn.accept{background:var(--ink);color:var(--paper)}
+@media(max-width:680px){.consent-banner{left:15px;right:15px;bottom:15px}.consent-inner{align-items:stretch;flex-direction:column;gap:16px}.consent-actions{flex-wrap:wrap}}
+
+</style>
 </head>
 
 <body>
+<div class="consent-banner" id="analytics-consent" role="dialog" aria-live="polite" aria-label="Analytics preferences"><div class="consent-inner"><div class="consent-copy"><strong>Analytics preferences</strong>I use Google Analytics to understand how visitors use this portfolio. Analytics is optional and is disabled unless you accept it.</div><div class="consent-actions"><button class="consent-btn" id="necessary-only" type="button">Only necessary</button><button class="consent-btn accept" id="accept-analytics" type="button">Accept analytics</button></div></div></div>
 
   <header>
     <div class="shell nav">
@@ -600,5 +609,6 @@
     </div>
   </footer>
 
+<script>(function(){const b=document.getElementById('analytics-consent'),a=document.getElementById('accept-analytics'),n=document.getElementById('necessary-only'),k='portfolio_analytics_consent',s=localStorage.getItem(k);function g(){gtag('consent','update',{'analytics_storage':'granted'});}function d(){gtag('consent','update',{'analytics_storage':'denied'});}if(s==='granted')g();else if(s==='denied')d();else b.classList.add('is-visible');a.addEventListener('click',function(){localStorage.setItem(k,'granted');g();b.classList.remove('is-visible');});n.addEventListener('click',function(){localStorage.setItem(k,'denied');d();b.classList.remove('is-visible');});})();</script>
 </body>
 </html>
