@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JGWVMMJHGT"></script>
+<script>gtag('js',new Date());gtag('config','G-JGWVMMJHGT');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sakura After Dark — Interactive data visualization project by Anikó Lukácsovics." />
+  <title>Sakura After Dark — Anikó Lukácsovics</title>
+
+  <style>
+    :root{
+      --paper:#f4f1ea;
+      --ink:#151515;
+      --muted:#6e6b66;
+      --line:#c9c5bd;
+      --red:#d83a2e;
+      --max:1320px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        linear-gradient(rgba(21,21,21,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21,21,21,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size:32px 32px;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.45;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .shell{
+      width:min(calc(100% - 48px),var(--max));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(244,241,234,.84);
+      border-bottom:1px solid rgba(21,21,21,.14);
+    }
+
+    .nav{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .back{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      color:var(--ink);
+    }
+
+    /* HERO */
+
+    .project-hero{
+      padding:82px 0 64px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .project-kicker{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .project-hero-grid{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:64px;
+      align-items:end;
+    }
+
+    h1{
+      margin:0;
+      max-width:930px;
+      font-size:clamp(64px,8.5vw,126px);
+      line-height:.86;
+      letter-spacing:-.06em;
+      font-weight:800;
+    }
+
+    h1 em{
+      color:var(--red);
+      font-style:normal;
+    }
+
+    .hero-subtitle{
+      margin:26px 0 0;
+      max-width:760px;
+      font-size:20px;
+      line-height:1.45;
+      color:#373532;
+    }
+
+    .meta{
+      display:grid;
+      gap:18px;
+      align-self:end;
+      padding-bottom:7px;
+    }
+
+    .meta-row{
+      padding-top:12px;
+      border-top:1px solid var(--line);
+    }
+
+    .meta-label{
+      display:block;
+      margin-bottom:4px;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .meta-value{
+      font-size:15px;
+    }
+
+    /* SHARED */
+
+    .label{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* PROCESS */
+
+    .process{
+      padding:88px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .process-step{
+      padding:0 0 82px;
+      margin-bottom:82px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .process-step:last-child{
+      margin-bottom:0;
+      padding-bottom:0;
+      border-bottom:0;
+    }
+
+    /* 02 / Data closes on the lower-third composition itself; a rule here
+       would read as a redundant separator after already-deliberate
+       whitespace. Spacing (padding/margin) is unchanged — only the line
+       is removed. */
+    .process-step-no-rule{
+      border-bottom:0;
+    }
+
+    .step-head{
+      display:grid;
+      grid-template-columns:170px 1fr;
+      gap:32px;
+      margin-bottom:38px;
+    }
+
+    .step-number{
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--red);
+    }
+
+    .step-copy{
+      max-width:760px;
+      margin-top:28px;
+    }
+
+    .step-copy h2{
+      margin:0 0 14px;
+      font-size:clamp(34px,4vw,58px);
+      line-height:.98;
+      letter-spacing:-.04em;
+    }
+
+    .step-copy p{
+      margin:0 0 24px;
+      max-width:720px;
+      font-size:18px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    /* Existing .step-copy p only ever had margin:0 (no gap) because no existing page has
+       more than one paragraph inside a single step. Sakura's Concept step has two, so the
+       gap above + this last-child reset were added — same pattern already used by
+       .concept-copy p / .copy p elsewhere in the portfolio, just applied here too. */
+    .step-copy p:last-child{
+      margin-bottom:0;
+    }
+
+    /* PIPELINE (02 / Data) */
+
+    /* 720px matches the intro prose measure above (.step-copy p) so the
+       pipeline's right edge resolves against the same boundary the reader
+       already saw established by the headline block. */
+    .pipeline-wrap{
+      margin-left:202px;
+      max-width:720px;
+    }
+
+    .pipeline{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:64px;
+    }
+
+    .pipeline-label{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--ink);
+      margin-bottom:10px;
+    }
+
+    .pipeline-scale{
+      font-size:clamp(24px,2.4vw,32px);
+      font-weight:800;
+      letter-spacing:-.02em;
+      color:var(--red);
+      margin-bottom:6px;
+    }
+
+    .pipeline-desc{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .pipeline-stage{
+      font-size:15px;
+      color:#373532;
+    }
+
+    .pipeline-stage-final{
+      margin-top:2px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      font-weight:700;
+      color:var(--ink);
+    }
+
+    .pipeline-arrow{
+      font-size:13px;
+      line-height:1;
+      color:var(--muted);
+      padding:7px 0;
+    }
+
+    /* Lower-third counterweight (02 / Data): deliberately wider than the
+       720px pipeline above it — the asymmetry is the point. Left = quiet,
+       already-red value restated in ink (no duplicate red emphasis), pulled
+       in from the block's own edge so it reads as tied to the Historical
+       Kyoto column above rather than sitting on the page's outer margin.
+       Right = the one new number in this block, given red + larger scale
+       and pushed to the block's far right edge (margin-left:auto) so it
+       stays the dominant lower-right counterweight. The two items are not
+       baseline-aligned — the strong item carries a deliberate top offset —
+       so this reads as an editorial pairing, not a KPI row. No rule above
+       or below this block; whitespace alone separates and closes it. */
+    .pipeline-scale-block{
+      margin-left:202px;
+      max-width:960px;
+      margin-top:72px;
+      display:flex;
+      align-items:flex-start;
+    }
+
+    .pipeline-scale-item{
+      margin-left:104px;
+    }
+
+    .pipeline-scale-number{
+      font-size:clamp(28px,3vw,40px);
+      font-weight:800;
+      letter-spacing:-.02em;
+      color:var(--ink);
+      margin-bottom:6px;
+    }
+
+    .pipeline-scale-label{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .pipeline-scale-item-strong{
+      margin-left:auto;
+      margin-top:32px;
+      text-align:right;
+    }
+
+    .pipeline-scale-item-strong .pipeline-scale-number{
+      font-size:clamp(40px,4.4vw,60px);
+      color:var(--red);
+    }
+
+    .pipeline-scale-support{
+      margin-top:10px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* CASES (03 / Data Preparation) */
+    /* Alignment axes are deliberate, not container-driven:
+       202px left offset matches the .step-head number column used throughout;
+       760px = the body-copy column, 960px = the section-02 pipeline's right edge,
+       1100px is reserved only for the case-dates statement so it can read as the
+       focal point without the composition drifting to the shell edge. */
+
+    .cases{
+      margin-left:202px;
+    }
+
+    /* The divider itself is capped to the shared 960px structural boundary
+       (the same one Section 02's pipeline and Section 04's validation rule
+       already use) via a pseudo-element, rather than the .case box's own
+       border — .case itself must stay unconstrained so case-statement's
+       approved 1100px exception can still render at full width inside it.
+       max-width:100% keeps mobile exactly as it was (full available width). */
+    .case + .case{
+      position:relative;
+      margin-top:64px;
+      padding-top:64px;
+    }
+
+    .case + .case::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:960px;
+      max-width:100%;
+      height:1px;
+      background:var(--line);
+    }
+
+    .case-label{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--red);
+    }
+
+    .case-notes{
+      max-width:960px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:40px;
+    }
+
+    .case-note-text{
+      font-size:15px;
+      line-height:1.55;
+      color:#373532;
+    }
+
+    /* Case 01 — Missing values */
+
+    .case-fragment{
+      max-width:760px;
+      margin:22px 0 34px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:baseline;
+      gap:12px;
+      font-size:clamp(28px,3.4vw,44px);
+      font-weight:700;
+      letter-spacing:-.01em;
+      color:var(--ink);
+    }
+
+    .frag-flag{ color:var(--red); }
+    .frag-plain{ color:var(--ink); }
+    .frag-dot{ color:var(--muted); font-weight:400; }
+
+    /* Case 02 — Date integrity (focal case) */
+
+    .case-dates{
+      margin-top:88px;
+      padding-top:88px;
+    }
+
+    .case-statement{
+      max-width:1100px;
+      margin:26px 0 40px;
+      font-size:clamp(44px,6.2vw,92px);
+      font-weight:800;
+      line-height:.94;
+      letter-spacing:-.03em;
+      text-transform:uppercase;
+      color:var(--ink);
+    }
+
+    .case-statement em{
+      color:var(--red);
+      font-style:normal;
+    }
+
+    /* Case 03 — Missing observations */
+    /* "1,774 / Stayed in." reads as one editorial statement, not a KPI:
+       the number and verb share a baseline and a comparable scale, both
+       noticeably smaller than the case-dates statement above, so this
+       stays the sequence's closing beat rather than a second focal point. */
+
+    .case-outcome{
+      max-width:760px;
+      margin:22px 0 34px;
+    }
+
+    .case-outcome-statement{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:2px;
+    }
+
+    .case-outcome-number{
+      font-size:clamp(40px,4.6vw,64px);
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-.02em;
+      color:var(--ink);
+    }
+
+    .case-outcome-verb{
+      font-size:clamp(32px,3.8vw,52px);
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-.02em;
+      text-transform:uppercase;
+      color:var(--red);
+    }
+
+    .case-outcome-context{
+      margin-top:14px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    /* VALIDATION (04) */
+    /* One unified horizontal statement, not separate modules: the lead
+       count and the two results share a single flex row and a single
+       baseline, spread across the full content width so the reading
+       order (5,304 validated → 0 · 0) carries the composition without
+       a literal arrow. Both zeros stay ink — they are a clean result,
+       not a warning — with red reserved for the one word that names
+       the act of validating. */
+
+    .validation{
+      margin-left:202px;
+    }
+
+    .validation-statement{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:56px;
+    }
+
+    .validation-lead,
+    .validation-result{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .validation-lead-number,
+    .validation-result-number{
+      font-size:clamp(56px,6.2vw,96px);
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-.02em;
+      color:var(--ink);
+      white-space:nowrap;
+    }
+
+    .validation-lead-label,
+    .validation-result-label{
+      display:block;
+      margin-top:10px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .validation-lead-label em{
+      color:var(--red);
+      font-style:normal;
+    }
+
+    .validation-results{
+      display:flex;
+      align-items:baseline;
+      gap:32px;
+      margin-right:50px;
+    }
+
+    .validation-results-dot{
+      align-self:center;
+      font-size:28px;
+      color:var(--muted);
+    }
+
+    .validation-support{
+      max-width:960px;
+      margin-top:48px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .validation-meta{
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .validation-note{
+      max-width:640px;
+      font-size:13px;
+      line-height:1.6;
+      color:var(--muted);
+    }
+
+    /* VISUAL STORY (05) */
+    /* One vertical spine organizes all three moments instead of a repeated
+       image+caption module. 640px is not the standard 202px text axis — it
+       is derived as the midpoint between that axis and the 1100px "dominant"
+       width already used by Section 03's case-statement, then rounded to the
+       640px medium-image tier already proven on this page. The spine stays a
+       plain 1px hairline throughout; only THE CONNECTION is allowed to cross
+       it, via the one deliberate overlap in the whole section. */
+
+    .story{
+      position:relative;
+      margin-top:56px;
+    }
+
+    .story-spine{
+      display:none; /* axis stays in the markup/positioning logic (see left:640px
+        below, reused throughout .story-time/.story-relationship/.story-space) —
+        only the rendered line itself is hidden, as a desktop optical test */
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:640px;
+      width:1px;
+      background:var(--line);
+    }
+
+    /* 01 — TIME: right edge shared with the spine (width:640, flush left) */
+
+    .story-time{
+      margin-bottom:96px;
+    }
+
+    .story-time-type{
+      width:640px;
+      margin:0 0 24px;
+      text-align:right;
+    }
+
+    .story-time-number{
+      font-size:92px;
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-.02em;
+      color:var(--ink);
+    }
+
+    .story-time-sub{
+      margin-top:6px;
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .story-time-figure{
+      width:640px;
+    }
+
+    .story-time-figure img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .story-time-caption{
+      width:640px;
+      margin-top:10px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      text-align:right;
+    }
+
+    /* 02 — RELATIONSHIP: the section's one exception. Numeral set in white
+       with mix-blend-mode:difference so it stays legible on both the paper
+       background and the dark image without being manually split in two —
+       against paper it reads near-black, against the dark image it reads
+       near-white, automatically. */
+
+    .story-relationship{
+      margin-bottom:96px;
+    }
+
+    .story-relationship-stat{
+      width:640px;
+      text-align:right;
+    }
+
+    .story-relationship-interp{
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .story-relationship-meta{
+      margin-top:2px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      opacity:.75;
+    }
+
+    /* Last child of the stat block, deliberately — everything above it stays
+       on paper; only the numeral itself is allowed to reach the image. Sits
+       tight against the two lines above it so the three read as one unit,
+       not a number with a detached caption floating over it. */
+    .story-relationship-number{
+      position:relative;
+      z-index:2;
+      margin-top:2px;
+      font-size:200px;
+      font-weight:800;
+      line-height:1;
+      letter-spacing:-.02em;
+      color:#fff;
+      mix-blend-mode:difference;
+    }
+
+    /* 1100px is the intended width whenever the shell has room for it
+       (from ~1330px viewport and up — unchanged, including 1440px). Below
+       that, the figure shrinks fluidly against the shell's own available
+       width (100% of its parent, which is unconstrained down to margin-left)
+       rather than overflowing it. margin-left stays fixed at 202px — the
+       image's left edge, and therefore the −0.38 overlap above it, never
+       moves; only the image's right edge and effective width respond. */
+    .story-relationship-figure{
+      position:relative;
+      z-index:1;
+      width:min(1100px, calc(100% - 202px));
+      margin-left:202px;
+      margin-top:-36px;
+    }
+
+    .story-relationship-figure img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    /* 03 — SPACE / MOVEMENT: left edge shared with the spine */
+
+    /* Third and final fixed-width + fixed-margin offender in this family
+       (see .story-relationship-figure and .story-space-figure above) —
+       same fluid-shrink pattern, same fixed 640px spine margin. */
+    .story-space-type{
+      width:min(460px, calc(100% - 640px));
+      margin:0 0 24px 640px;
+    }
+
+    .story-space-statement{
+      font-size:56px;
+      font-weight:800;
+      line-height:1.05;
+      letter-spacing:-.02em;
+      text-transform:uppercase;
+      color:var(--ink);
+    }
+
+    /* Same fluid-shrink pattern as .story-relationship-figure just above:
+       this was a second fixed-width + fixed-margin element found to be the
+       remaining cause of Section 05 overflow once the relationship figure
+       was fixed. 620px is kept whenever the shell has room for it (from
+       ~1330px viewport and up, unchanged); margin-left stays fixed at 640px
+       (the spine axis) in all cases. */
+    .story-space-figure{
+      width:min(620px, calc(100% - 640px));
+      margin-left:640px;
+    }
+
+    .story-space-figure img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .story-space-caption{
+      margin:10px 0 0 640px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* INTERACTION (06) */
+    /* One continuous line, not four boxes. Solid = scroll is the state (Bloom,
+       then Connection, whose five internal stages are real code proportions —
+       TIME .05 / EXPLAIN .1875 / MORPH .65 / HOLD .7875 / REVEAL 1, exactly).
+       Dashed = Sakura Front's own independent 9s clock, once scroll has only
+       triggered it. That solid→dashed change is the one real interruption on
+       the whole score — everywhere else stays continuous, on purpose. */
+
+    .score{
+      position:relative;
+      margin-left:202px;
+      margin-top:56px;
+      height:250px;
+    }
+
+    .score-tag{
+      position:absolute;
+      top:0;
+    }
+
+    .score-tag-bloom{ left:0; }
+    .score-tag-connection{ left:14%; }
+    .score-tag-front{ left:70%; }
+
+    .score-flag{
+      position:absolute;
+      top:32px;
+      left:64%;
+      transform:translateX(-50%);
+      font-size:32px;
+      font-weight:800;
+      letter-spacing:-.02em;
+      color:var(--ink);
+    }
+
+    .score-flag-stem{
+      position:absolute;
+      top:68px;
+      left:64%;
+      width:1px;
+      height:16px;
+      background:var(--line);
+    }
+
+    .score-line{
+      position:absolute;
+      top:84px;
+      left:0;
+      width:69%;
+      height:1px;
+      background:var(--line);
+    }
+
+    /* A visible gap, not just a style change, is what makes the handoff
+       actually read as an interruption rather than a texture change. */
+    .score-line-dashed{
+      position:absolute;
+      top:84px;
+      left:71%;
+      width:29%;
+      border-top:1px dashed var(--line);
+    }
+
+    .score-endcap{
+      position:absolute;
+      top:78px;
+      left:70%;
+      width:2px;
+      height:13px;
+      background:var(--line);
+      transform:translateX(-1px);
+    }
+
+    /* A second, unlabeled line under Connection only — pure repetition of
+       the existing hairline vocabulary, giving that span more visual mass
+       without adding a new kind of mark. */
+    .score-band{
+      position:absolute;
+      top:96px;
+      left:14%;
+      width:56%;
+      height:1px;
+      background:var(--line);
+    }
+
+    .score-band-cap{
+      position:absolute;
+      top:93px;
+      width:1px;
+      height:7px;
+      background:var(--line);
+    }
+
+    .score-band-cap-start{ left:14%; }
+    .score-band-cap-end{ left:70%; }
+
+    /* Tick height itself now carries the real relative weight of each stage
+       (MORPH is 46% of the sequence — by far the tallest mark on the score;
+       TIME is 5% — the shortest) — no new labels, just more of the same
+       vocabulary used with more range. */
+    .score-tick{
+      position:absolute;
+      width:1px;
+      background:var(--line);
+    }
+
+    .score-tick-time{ left:16.8%; top:82px; height:4px; }
+    .score-tick-explain{ left:24.5%; top:80px; height:8px; }
+    .score-tick-morph{ left:50.4%; top:75px; height:18px; }
+    .score-tick-hold{ left:58.1%; top:80px; height:8px; }
+    .score-tick-reveal{ left:70%; top:78px; height:12px; }
+
+    .score-stages-caption{
+      position:absolute;
+      top:106px;
+      left:14%;
+    }
+
+    /* The dashed segment IS the timeline now — no screenshot. A single
+       pink dot (the app's own accent, used nowhere else in the portfolio's
+       own drawn elements — a deliberate, tightly-scoped exception) marks
+       the active position directly on the line; two small muted labels
+       name the range. Scroll notation -> handoff -> time notation, all in
+       the same thin-line vocabulary the rest of the score already uses. */
+    .score-scrub-dot{
+      position:absolute;
+      top:84px;
+      left:74%;
+      width:6px;
+      height:6px;
+      margin:-3px 0 0 -3px;
+      border-radius:50%;
+      background:#ff2aa3;
+    }
+
+    .score-scrub-label{
+      position:absolute;
+      top:66px;
+      white-space:nowrap;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .score-scrub-label-start{
+      left:74%;
+      transform:translateX(-50%);
+    }
+
+    .score-scrub-label-end{
+      left:100%;
+      transform:translateX(-100%);
+    }
+
+    .score-playpause-wrap{
+      position:absolute;
+      top:110px;
+      left:70%;
+    }
+
+    .score-playpause-wrap img{
+      display:block;
+      width:120px;
+      height:auto;
+    }
+
+    /* Reused by the mobile evidence block only (.score-mobile-evidence) —
+       PLAY is the only screenshot-based UI evidence left in this section. */
+    .score-evidence-item img{
+      display:block;
+      width:100%;
+      max-width:150px;
+      height:auto;
+    }
+
+    /* MOBILE SCORE — one continuous rail, not three stacked groups. Bloom and
+       Connection share a single solid border-left; Front's border-left is
+       dashed; the two rails sit flush against each other with one small
+       crossing tick at the seam, so the line itself never actually breaks —
+       only its style does, at the one real handoff. */
+
+    .score-mobile{
+      display:none;
+    }
+
+    .score-mobile-rail{
+      padding-left:22px;
+    }
+
+    .score-mobile-rail-solid{
+      border-left:1px solid var(--line);
+    }
+
+    .score-mobile-rail-dashed{
+      border-left:1px dashed var(--line);
+    }
+
+    .score-mobile-stop{
+      margin-bottom:32px;
+    }
+
+    .score-mobile-rail > .score-mobile-stop:last-child{
+      margin-bottom:0;
+    }
+
+    /* Same device as desktop's .score-endcap (a short, bold segment marking
+       the handoff), just already vertical since the rail itself is —
+       reused, not reinvented. A small pause on both sides (not just after)
+       is what keeps the solid and dashed rails reading as one paused line
+       instead of two independently stacked blocks. */
+    .score-mobile-endcap{
+      width:2px;
+      height:10px;
+      margin:8px 0 14px -1px;
+      background:var(--line);
+    }
+
+    /* Each stage is its own row on the spine, in normal flow — no reserved
+       min-height, so there's no leftover blank area. The gap AFTER each
+       stage is sized to its real share of the sequence (TIME 5%, EXPLAIN
+       14%, MORPH 46%, HOLD 14%, REVEAL 21%), so MORPH — the actual dot
+       repositioning — visibly takes the longest stretch of the spine. */
+    .score-mobile-stage{
+      position:relative;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .score-mobile-stage::before{
+      content:'';
+      position:absolute;
+      top:50%;
+      left:-22px;
+      width:10px;
+      height:1px;
+      background:var(--line);
+      transform:translateY(-.5px);
+    }
+
+    .score-mobile-stage-time{ margin:14px 0 10px; }
+    .score-mobile-stage-explain{ margin-bottom:22px; }
+    .score-mobile-stage-morph{ margin-bottom:70px; }
+    .score-mobile-stage-hold{ margin-bottom:22px; }
+    /* REVEAL keeps the tick; −0.38 deliberately doesn't get one of its own —
+       proximity + sharing REVEAL's mark is what reads as "this is what
+       REVEAL produces" rather than a sixth, independent stop. */
+    .score-mobile-stage-reveal{ margin-bottom:4px; }
+
+    .score-mobile-flag{
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:-.02em;
+      color:var(--ink);
+    }
+
+    /* Same translation as desktop's dashed segment: a pink dot + two small
+       dates instead of a screenshot. PLAY is the only real UI fragment. */
+    .score-mobile-scrub{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .score-mobile-scrub-dot{
+      flex-shrink:0;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#ff2aa3;
+    }
+
+    .score-mobile-evidence{
+      margin-top:16px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    /* OUTCOME (07) */
+    /* The closing beat — deliberately quieter and more spaced out than every
+       section before it. A hairline "window" (no shadow, no fill beyond the
+       paper itself) frames a real crop of the live site; typography, not a
+       button, carries the CTA. */
+
+    .outcome{
+      margin-left:202px;
+      margin-top:72px;
+    }
+
+    .outcome-window{
+      max-width:900px;
+      border:1px solid var(--line);
+      background:var(--paper);
+    }
+
+    .outcome-window-bar{
+      height:32px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:0 14px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .outcome-window-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      border:1px solid var(--muted);
+    }
+
+    .outcome-window-figure img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .outcome-cta{
+      display:inline-flex;
+      align-items:baseline;
+      gap:8px;
+      margin-top:56px;
+      font-size:18px;
+      font-weight:700;
+      color:var(--ink);
+      border-bottom:1px solid transparent;
+      padding-bottom:3px;
+      transition:border-color .2s ease;
+    }
+
+    .outcome-cta:hover{
+      border-bottom-color:var(--ink);
+    }
+
+    .outcome-cta-arrow{
+      display:inline-block;
+      transition:transform .2s ease;
+    }
+
+    .outcome-cta:hover .outcome-cta-arrow{
+      transform:translateX(4px);
+    }
+
+    .outcome-meta{
+      margin-top:48px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-size:14px;
+      color:#373532;
+    }
+
+    .outcome-meta a{
+      border-bottom:1px solid var(--muted);
+      transition:border-color .2s ease, color .2s ease;
+    }
+
+    .outcome-meta a:hover{
+      color:var(--ink);
+      border-bottom-color:var(--ink);
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:44px 0 72px;
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:32px;
+      align-items:flex-end;
+      border-top:1px solid var(--ink);
+      padding-top:24px;
+    }
+
+    .footer-title{
+      font-size:clamp(34px,5vw,68px);
+      letter-spacing:-.045em;
+      line-height:.95;
+      font-weight:750;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .footer-links a{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      border-bottom:1px solid var(--ink);
+      padding-bottom:3px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:920px){
+      .shell{
+        width:min(calc(100% - 30px),var(--max));
+      }
+
+      .nav{
+        height:auto;
+        padding:18px 0;
+        align-items:flex-start;
+      }
+
+      .project-hero{
+        padding:64px 0 48px;
+      }
+
+      .project-hero-grid{
+        grid-template-columns:1fr;
+        gap:34px;
+      }
+
+      .step-head{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+
+      .pipeline-wrap{
+        margin-left:0;
+        max-width:none;
+      }
+
+      .pipeline{
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+
+      .pipeline-stream + .pipeline-stream{
+        padding-top:32px;
+        border-top:1px solid var(--line);
+      }
+
+      .pipeline-scale-block{
+        margin-left:0;
+        max-width:none;
+        margin-top:48px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:32px;
+      }
+
+      .pipeline-scale-item{
+        margin-left:0;
+      }
+
+      .pipeline-scale-item-strong{
+        margin-left:0;
+        margin-top:0;
+        text-align:left;
+      }
+
+      .cases{
+        margin-left:0;
+      }
+
+      .case + .case{
+        margin-top:56px;
+        padding-top:56px;
+      }
+
+      .case-dates{
+        margin-top:64px;
+        padding-top:64px;
+      }
+
+      .case-fragment,
+      .case-statement,
+      .case-notes,
+      .case-outcome{
+        max-width:none;
+      }
+
+      .case-notes{
+        grid-template-columns:1fr;
+        gap:24px;
+      }
+
+      .validation{
+        margin-left:0;
+      }
+
+      .validation-statement{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:36px;
+      }
+
+      .validation-note{
+        max-width:none;
+      }
+
+      .story-spine{
+        display:none;
+      }
+
+      .story-time,
+      .story-relationship{
+        margin-bottom:64px;
+      }
+
+      .story-time-type,
+      .story-time-figure{
+        width:auto;
+        text-align:left;
+      }
+
+      .story-time-caption{
+        width:auto;
+        text-align:left;
+      }
+
+      .story-relationship-stat{
+        width:auto;
+        text-align:left;
+        margin-bottom:24px;
+      }
+
+      .story-relationship-figure{
+        width:auto;
+        margin-left:0;
+        margin-top:0;
+      }
+
+      .story-space-type,
+      .story-space-figure,
+      .story-space-caption{
+        width:auto;
+        margin-left:0;
+      }
+
+      .score{
+        display:none;
+      }
+
+      .score-mobile{
+        display:block;
+        margin-top:40px;
+      }
+
+      .outcome{
+        margin-left:0;
+        margin-top:48px;
+      }
+
+      .outcome-window{
+        max-width:none;
+      }
+
+      .footer-grid{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .footer-links{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:560px){
+      .brand{
+        font-size:10px;
+      }
+
+      .back{
+        font-size:9px;
+      }
+
+      h1{
+        font-size:56px;
+      }
+
+      .step-copy p{
+        font-size:17px;
+      }
+
+      .case-note-text{
+        font-size:14px;
+      }
+
+      .case-fragment{
+        gap:8px;
+      }
+
+      .validation-results{
+        gap:20px;
+      }
+
+      .story-time-number{
+        font-size:64px;
+      }
+
+      .story-relationship-number{
+        font-size:104px;
+      }
+
+      .story-space-statement{
+        font-size:40px;
+      }
+    }
+
+.consent-banner{position:fixed;left:24px;right:24px;bottom:24px;z-index:9999;display:none;max-width:760px;margin:0 auto;padding:20px 22px;background:#faf8f3;border:1px solid var(--ink);box-shadow:0 12px 40px rgba(21,21,21,.12)}
+.consent-banner.is-visible{display:block}.consent-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}.consent-copy{max-width:470px;font-size:13px;color:#373532}.consent-copy strong{display:block;margin-bottom:5px;color:var(--ink);font-size:14px}.consent-actions{display:flex;gap:10px;flex-shrink:0}.consent-btn{border:1px solid var(--ink);padding:10px 14px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--ink)}.consent-btn.accept{background:var(--ink);color:var(--paper)}
+@media(max-width:680px){.consent-banner{left:15px;right:15px;bottom:15px}.consent-inner{align-items:stretch;flex-direction:column;gap:16px}.consent-actions{flex-wrap:wrap}}
+
+</style>
+</head>
+
+<body>
+<div class="consent-banner" id="analytics-consent" role="dialog" aria-live="polite" aria-label="Analytics preferences"><div class="consent-inner"><div class="consent-copy"><strong>Analytics preferences</strong>I use Google Analytics to understand how visitors use this portfolio. Analytics is optional and is disabled unless you accept it.</div><div class="consent-actions"><button class="consent-btn" id="necessary-only" type="button">Only necessary</button><button class="consent-btn accept" id="accept-analytics" type="button">Accept analytics</button></div></div></div>
+
+  <header>
+    <div class="shell nav">
+
+      <a class="brand" href="index.html">
+        ANIKÓ LUKÁCSOVICS / PORTFOLIO
+      </a>
+
+      <a class="back" href="index.html">
+        ← Back to Visual Storytelling
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="project-hero">
+      <div class="shell">
+
+        <div class="project-kicker">
+          Visual Storytelling
+        </div>
+
+        <div class="project-hero-grid">
+
+          <div>
+            <h1>
+              Sakura after <em>dark</em>
+            </h1>
+
+            <p class="hero-subtitle">
+              Interactive data story
+            </p>
+          </div>
+
+          <div class="meta">
+
+            <div class="meta-row">
+              <span class="meta-label">Project</span>
+              <span class="meta-value">Personal project</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Tools</span>
+              <span class="meta-value">
+                Google Sheets · Apps Script · React · Vite
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Focus</span>
+              <span class="meta-value">
+                Data Visualization · Data Engineering · Interactive Web
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROCESS -->
+
+    <section class="process">
+      <div class="shell">
+
+        <!-- STEP 01 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              01 / Concept
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Reading spring<br/>
+                across twelve centuries.
+              </h2>
+
+              <p>
+                Sakura After Dark explores how the timing of spring has shifted through more than 1,200 years of cherry blossom records.
+              </p>
+
+              <p>
+                Beginning with Kyoto’s historical flowering archive, the story connects bloom timing with reconstructed March temperatures, then expands across Japan to reveal the geographic movement of a typical Sakura season.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- STEP 02 -->
+
+        <div class="process-step process-step-no-rule">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              02 / Data
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Two datasets.<br/>
+                Two scales.<br/>
+                One story of spring.
+              </h2>
+
+              <p>
+                The project combines two very different views of cherry blossom season: a 1,200-year historical record from Kyoto and modern station-level observations from across Japan.
+              </p>
+
+              <p>
+                Bringing them together required separate data pipelines — one built around historical climate records, the other around automated extraction and geographic enrichment of JMA observations.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="pipeline-wrap">
+
+            <div class="pipeline">
+
+              <div class="pipeline-stream">
+                <div class="pipeline-label">Historical Kyoto</div>
+                <div class="pipeline-scale">1,200+ years</div>
+                <div class="pipeline-desc">Flowering + temperature</div>
+
+                <div class="pipeline-stage">Historical sources</div>
+                <div class="pipeline-arrow" aria-hidden="true">↓</div>
+                <div class="pipeline-stage">Cleaning + year-based join</div>
+                <div class="pipeline-arrow" aria-hidden="true">↓</div>
+                <div class="pipeline-stage pipeline-stage-final">Clean_Master</div>
+              </div>
+
+              <div class="pipeline-stream">
+                <div class="pipeline-label">National Japan</div>
+                <div class="pipeline-scale">2001–2026</div>
+                <div class="pipeline-desc">Flowering + full bloom</div>
+
+                <div class="pipeline-stage">JMA HTML tables</div>
+                <div class="pipeline-arrow" aria-hidden="true">↓</div>
+                <div class="pipeline-stage">Apps Script scraper</div>
+                <div class="pipeline-arrow" aria-hidden="true">↓</div>
+                <div class="pipeline-stage">Long-format dataset</div>
+                <div class="pipeline-arrow" aria-hidden="true">↓</div>
+                <div class="pipeline-stage">Station geography</div>
+                <div class="pipeline-arrow" aria-hidden="true">↓</div>
+                <div class="pipeline-stage pipeline-stage-final">JMA_Sakura_Final</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="pipeline-scale-block">
+
+            <div class="pipeline-scale-item">
+              <div class="pipeline-scale-number">1,200+</div>
+              <div class="pipeline-scale-label">Years</div>
+            </div>
+
+            <div class="pipeline-scale-item pipeline-scale-item-strong">
+              <div class="pipeline-scale-number">5,304</div>
+              <div class="pipeline-scale-label">National records</div>
+              <div class="pipeline-scale-support">102 stations · 47 prefectures</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- STEP 03 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              03 / Data Preparation
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Cleaning data without<br/>
+                cleaning away its meaning.
+              </h2>
+
+              <p>
+                Historical and modern sources carried different kinds of ambiguity. Preparing them meant making deliberate decisions that preserved the meaning of the original observations, not just their format.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="cases">
+
+            <!-- CASE 01 — MISSING VALUES -->
+
+            <div class="case case-values">
+
+              <div class="case-label">01 / Missing values</div>
+
+              <div class="case-fragment">
+                <span class="frag-flag">-50</span>
+                <span class="frag-dot">·</span>
+                <span class="frag-flag">-999.9</span>
+                <span class="frag-dot">·</span>
+                <span class="frag-plain">blank</span>
+                <span class="frag-dot">·</span>
+                <span class="frag-plain">“—”</span>
+              </div>
+
+              <div class="case-notes">
+                <div class="case-note">
+                  <div class="meta-label">Problem</div>
+                  <div class="case-note-text">The historical Kyoto sources used several source-specific representations for missing values.</div>
+                </div>
+                <div class="case-note">
+                  <div class="meta-label">Decision</div>
+                  <div class="case-note-text">Identify and exclude these codes from analytical measurements rather than treating them as numerical observations.</div>
+                </div>
+                <div class="case-note">
+                  <div class="meta-label">Why it mattered</div>
+                  <div class="case-note-text">Missing observations must not become artificial temperature or flowering measurements.</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- CASE 02 — DATE INTEGRITY -->
+
+            <div class="case case-dates">
+
+              <div class="case-label">02 / Date integrity</div>
+
+              <div class="case-statement">
+                A date can<br/>
+                move <em>a day</em>.
+              </div>
+
+              <div class="case-notes">
+                <div class="case-note">
+                  <div class="meta-label">Problem</div>
+                  <div class="case-note-text">JavaScript Date objects caused JMA observation dates to appear one day earlier after being written to Google Sheets.</div>
+                </div>
+                <div class="case-note">
+                  <div class="meta-label">Decision</div>
+                  <div class="case-note-text">Generate timezone-safe ISO YYYY-MM-DD values.</div>
+                </div>
+                <div class="case-note">
+                  <div class="meta-label">Why it mattered</div>
+                  <div class="case-note-text">The transformed dataset must preserve the exact observation date published by JMA.</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- CASE 03 — MISSING OBSERVATIONS -->
+
+            <div class="case case-coverage">
+
+              <div class="case-label">03 / Missing observations</div>
+
+              <div class="case-outcome">
+                <div class="case-outcome-statement">
+                  <span class="case-outcome-number">1,774</span>
+                  <span class="case-outcome-verb">Stayed in.</span>
+                </div>
+                <div class="case-outcome-context">of 5,304 station-year-event records</div>
+              </div>
+
+              <div class="case-notes">
+                <div class="case-note">
+                  <div class="meta-label">Problem</div>
+                  <div class="case-note-text">1,774 of the 5,304 station-year-event records contained no observation.</div>
+                </div>
+                <div class="case-note">
+                  <div class="meta-label">Decision</div>
+                  <div class="case-note-text">Keep those rows and explicitly mark them as Observation_Status = Missing.</div>
+                </div>
+                <div class="case-note">
+                  <div class="meta-label">Why it mattered</div>
+                  <div class="case-note-text">Missing observations contain information about data coverage and should not silently disappear from the dataset.</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- STEP 04 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              04 / Validation
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Before visualizing,<br/>
+                verify.
+              </h2>
+
+              <p>
+                A visualization is only as reliable as the data behind it. The final datasets were checked for structural, temporal and geographic integrity before they entered the visual story.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="validation">
+
+            <div class="validation-statement">
+
+              <div class="validation-lead">
+                <span class="validation-lead-number">5,304</span>
+                <span class="validation-lead-label">Records <em>validated</em></span>
+              </div>
+
+              <div class="validation-results">
+                <div class="validation-result">
+                  <span class="validation-result-number">0</span>
+                  <span class="validation-result-label">Invalid dates</span>
+                </div>
+                <span class="validation-results-dot">/</span>
+                <div class="validation-result">
+                  <span class="validation-result-number">0</span>
+                  <span class="validation-result-label">Duplicates</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="validation-support">
+              <div class="validation-meta">102 / 102 stations · 47 prefectures · 9 regions</div>
+              <div class="validation-note">
+                <span class="case-label">Join safeguard /</span> Processing stops if a station remains unmatched or the record count changes.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- STEP 05 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              05 / Visual Story
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Turning data into<br/>
+                a visual story.
+              </h2>
+
+            </div>
+
+          </div>
+
+          <div class="story">
+
+            <div class="story-spine" aria-hidden="true"></div>
+
+            <!-- 01 — TIME -->
+
+            <div class="story-time">
+
+              <div class="story-time-type">
+                <div class="story-time-number">1,200</div>
+                <div class="story-time-sub">Years of spring</div>
+              </div>
+
+              <div class="story-time-figure">
+                <img
+                  src="sakura-bloom.png"
+                  alt="Historical Kyoto bloom-date scatter with trend line, spanning the years 801 to 2015"
+                />
+              </div>
+
+              <div class="story-time-caption">Kyoto, 801–2015</div>
+
+            </div>
+
+            <!-- 02 — RELATIONSHIP -->
+
+            <div class="story-relationship">
+
+              <div class="story-relationship-stat">
+                <div class="story-relationship-interp">Moderate negative relationship</div>
+                <div class="story-relationship-meta">800 years with both records</div>
+                <div class="story-relationship-number">−0.38</div>
+              </div>
+
+              <div class="story-relationship-figure">
+                <img
+                  src="sakura-connection.png"
+                  alt="Scatter plot correlating March temperature with bloom date across 800 years"
+                />
+              </div>
+
+            </div>
+
+            <!-- 03 — SPACE / MOVEMENT -->
+
+            <div class="story-space">
+
+              <div class="story-space-type">
+                <div class="story-space-statement">
+                  Spring<br/>
+                  moves<br/>
+                  north.
+                </div>
+              </div>
+
+              <div class="story-space-figure">
+                <img
+                  src="sakura-front.png"
+                  alt="Map of station-level median flowering dates across Japan mid-season: southern stations already past bloom, central Japan actively blooming, the north still ahead"
+                />
+              </div>
+
+              <div class="story-space-caption">Station-level median flowering dates, 2001–2026</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- STEP 06 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              06 / Interaction
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                The reading is<br/>
+                part of the design.
+              </h2>
+
+              <p>
+                Scroll, sequence and motion determine when the reader encounters each part of the story — and when control changes hands.
+              </p>
+
+            </div>
+
+          </div>
+
+          <!-- DESKTOP SCORE -->
+
+          <div class="score">
+
+            <div class="score-tag score-tag-bloom case-label">Bloom</div>
+            <div class="score-tag score-tag-connection case-label">The connection</div>
+            <div class="score-tag score-tag-front case-label">Sakura front</div>
+
+            <div class="score-flag-stem" aria-hidden="true"></div>
+            <div class="score-flag">−0.38</div>
+
+            <div class="score-line" aria-hidden="true"></div>
+            <div class="score-line-dashed" aria-hidden="true"></div>
+            <div class="score-endcap" aria-hidden="true"></div>
+
+            <div class="score-tick score-tick-time" aria-hidden="true"></div>
+            <div class="score-tick score-tick-explain" aria-hidden="true"></div>
+            <div class="score-tick score-tick-morph" aria-hidden="true"></div>
+            <div class="score-tick score-tick-hold" aria-hidden="true"></div>
+            <div class="score-tick score-tick-reveal" aria-hidden="true"></div>
+
+            <div class="score-band" aria-hidden="true"></div>
+            <div class="score-band-cap score-band-cap-start" aria-hidden="true"></div>
+            <div class="score-band-cap score-band-cap-end" aria-hidden="true"></div>
+
+            <div class="score-stages-caption validation-meta">Time · Explain · Morph · Hold · Reveal</div>
+
+            <div class="score-scrub-dot" aria-hidden="true"></div>
+            <div class="score-scrub-label score-scrub-label-start">Jan 10</div>
+            <div class="score-scrub-label score-scrub-label-end">May 17</div>
+
+            <div class="score-playpause-wrap">
+              <img src="sakura-ui-playpause.png" alt="Sakura Front's play / pause / replay control" />
+            </div>
+
+          </div>
+
+          <!-- MOBILE SCORE -->
+
+          <div class="score-mobile">
+
+            <div class="score-mobile-rail score-mobile-rail-solid">
+
+              <div class="score-mobile-stop">
+                <div class="case-label">Bloom</div>
+              </div>
+
+              <div class="score-mobile-stop score-mobile-connection">
+                <div class="case-label">The connection</div>
+
+                <div class="score-mobile-stage score-mobile-stage-time">Time</div>
+                <div class="score-mobile-stage score-mobile-stage-explain">Explain</div>
+                <div class="score-mobile-stage score-mobile-stage-morph">Morph</div>
+                <div class="score-mobile-stage score-mobile-stage-hold">Hold</div>
+                <div class="score-mobile-stage score-mobile-stage-reveal">Reveal</div>
+                <div class="score-mobile-flag">−0.38</div>
+              </div>
+
+            </div>
+
+            <div class="score-mobile-endcap" aria-hidden="true"></div>
+
+            <div class="score-mobile-rail score-mobile-rail-dashed">
+
+              <div class="score-mobile-stop">
+                <div class="case-label">Sakura front</div>
+                <div class="score-mobile-scrub">
+                  <span class="score-mobile-scrub-dot" aria-hidden="true"></span>
+                  Jan 10 · May 17
+                </div>
+                <div class="score-mobile-evidence">
+                  <div class="score-evidence-item">
+                    <img src="sakura-ui-playpause.png" alt="Sakura Front's play / pause / replay control" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- STEP 07 -->
+
+        <div class="process-step">
+
+          <div class="step-head">
+
+            <div class="step-number">
+              07 / Outcome
+            </div>
+
+            <div class="step-copy">
+
+              <h2>
+                Built to be explored.
+              </h2>
+
+              <p>
+                The case study explains how the project was built. The live experience shows why those decisions matter.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="outcome">
+
+            <div class="outcome-window">
+              <div class="outcome-window-bar">
+                <span class="outcome-window-dot"></span>
+                <span class="outcome-window-dot"></span>
+                <span class="outcome-window-dot"></span>
+              </div>
+              <div class="outcome-window-figure">
+                <img
+                  src="sakura-hero.png"
+                  alt="The live Sakura After Dark interactive — opening hero screen"
+                />
+              </div>
+            </div>
+
+            <a
+              class="outcome-cta"
+              href="https://l-aniko.github.io/sakura-after-dark/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the live experience <span class="outcome-cta-arrow">→</span>
+            </a>
+
+            <div class="outcome-meta">
+              <div><span class="case-label">Built with —</span> React · Vite · Google Sheets · Apps Script</div>
+              <div><span class="case-label">Read next —</span> <a href="index.html">Back to Visual Storytelling</a></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="shell footer-grid">
+
+      <div>
+
+        <div class="label" style="margin-bottom:12px">
+          Contact
+        </div>
+
+        <div class="footer-title">
+          Let’s make complex<br/>
+          things simple.
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a
+          href="https://www.linkedin.com/in/anikolukacsovics"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a href="mailto:aniko.lukacsovics@gmail.com">
+          Email
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+<script>(function(){const b=document.getElementById('analytics-consent'),a=document.getElementById('accept-analytics'),n=document.getElementById('necessary-only'),k='portfolio_analytics_consent',s=localStorage.getItem(k);function g(){gtag('consent','update',{'analytics_storage':'granted'});}function d(){gtag('consent','update',{'analytics_storage':'denied'});}if(s==='granted')g();else if(s==='denied')d();else b.classList.add('is-visible');a.addEventListener('click',function(){localStorage.setItem(k,'granted');g();b.classList.remove('is-visible');});n.addEventListener('click',function(){localStorage.setItem(k,'denied');d();b.classList.remove('is-visible');});})();</script>
+</body>
+</html>
