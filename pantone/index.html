@@ -16,6 +16,13 @@
     <link rel="stylesheet" crossorigin href="/pantone/assets/index-DOPW0rD0.css">
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      Static fallback shell: mirrors OpeningScene's initial markup/classes
+      exactly, so a non-JS fetch sees real content and the CSS already
+      linked above styles it identically to the eventual React render.
+      React's createRoot() (see src/main.tsx) takes over and replaces this
+      on mount -- it is not hydrated, just a plain first render into #root.
+    -->
+    <div id="root"><main><section class="opening grid" aria-label="Opening"><p class="opening__metadata">AN INDEPENDENT ML EXPERIMENT &middot; 2026</p><h1 class="opening__headline">Can machine learning<br>anticipate the next<br>Color of the Year?</h1><p class="opening__supporting">27 years of color.<br>One prediction for 2027.</p><p class="opening__scroll" aria-hidden="true">SCROLL &darr;</p></section></main></div>
   </body>
 </html>
