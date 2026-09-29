@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Consent Mode: analytics denied by default -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -18,558 +19,193 @@
     gtag('config', 'G-JGWVMMJHGT');
   </script>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About Anikó Lukácsovics — finance, visual thinking, data visualization, code and automation." />
-  <title>About — Anikó Lukácsovics</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Anikó Lukácsovics</title>
+<style>
+:root{
+  --paper:#f4f1ea; --ink:#151515; --muted:#6e6b66; --line:#c9c5bd;
+  --indigo:#243a73; --red:#d83a2e; --card:#faf8f3; --max:1320px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    linear-gradient(rgba(21,21,21,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,21,21,.035) 1px, transparent 1px),
+    var(--paper);
+  background-size:32px 32px;
+  color:var(--ink);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height:1.45;
+}
+a{color:inherit;text-decoration:none}
+.shell{width:min(calc(100% - 48px),var(--max));margin:0 auto}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(244,241,234,.84);border-bottom:1px solid rgba(21,21,21,.14)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+.brand{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.navlinks{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.navlinks a.active{color:var(--ink)}
+.about-hero{padding:64px 0 64px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,760px) 200px;grid-template-areas:'copy portrait';gap:44px;align-items:end;padding-right:72px}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:24px}
+h1{margin:0;max-width:760px;font-size:clamp(52px,5.8vw,88px);line-height:.92;letter-spacing:-.055em;font-weight:800}
+.hero-copy{margin:52px 0 0;max-width:720px;font-size:18px;color:#373532}
+.portrait-wrap{grid-area:portrait;display:flex;justify-content:flex-start;align-items:flex-end;align-self:end;margin-top:0}
+.portrait{display:block;width:200px;aspect-ratio:4/5;object-fit:cover;object-position:center 28%;border:1px solid var(--line);background:var(--card)}
+.about-sections{padding-bottom:80px}
+.about-row{position:relative;min-height:330px;display:grid;grid-template-columns:150px 400px minmax(0,1fr);gap:48px;padding:58px 72px 64px 0;align-items:start}
+.about-row::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:100vw;border-bottom:1px solid var(--line)}
+.last-about-row::after{display:none}
+.section-num{font-size:clamp(64px,8vw,120px);line-height:.8;letter-spacing:-.06em;font-weight:700;color:transparent;-webkit-text-stroke:1px var(--ink);opacity:.35}
+.label{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.accent{width:66px;height:4px;background:var(--red);margin:26px 0}
+h2{margin:0;max-width:400px;font-size:clamp(40px,4.1vw,58px);line-height:.95;letter-spacing:-.045em}
+.section-copy{max-width:460px;padding-top:0;align-self:end;padding-bottom:0;transform:translateX(56px)}
+.section-copy p{margin:0;font-size:17px;line-height:1.45;letter-spacing:0;color:#4b4945}
+.section-copy strong{color:var(--ink);font-weight:700}
+footer{padding:44px 0 72px}
+.footer-grid{position:relative;display:flex;justify-content:space-between;gap:32px;align-items:flex-end;padding:24px 0 0}
+.footer-grid::before{content:"";position:absolute;left:50%;transform:translateX(-50%);top:0;width:100vw;border-top:1px solid var(--ink)}
+.footer-title{font-size:clamp(34px,5vw,68px);letter-spacing:-.045em;line-height:.95;font-weight:750}
+.footer-links{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.footer-links a{font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+@media(max-width:920px){
+  .shell{width:min(calc(100% - 30px),var(--max))}
+  .nav{align-items:flex-start}
+  .navlinks{gap:12px}
+  .about-hero{padding:72px 0 48px}
+  .hero-grid{grid-template-columns:1fr;grid-template-areas:'copy' 'portrait';gap:32px;padding-right:0}
+  .portrait-wrap{justify-content:flex-start;padding-top:0}
+  .portrait{width:190px}
+  .about-row{grid-template-columns:1fr;gap:18px;min-height:auto;padding:44px 0}
+  .section-num{font-size:64px}
+  .footer-grid{align-items:flex-start;flex-direction:column}
+  .footer-links{justify-content:flex-start}
+}
+@media(max-width:560px){
+  .brand{font-size:11px} .navlinks a{font-size:10px} .navlinks{gap:9px}
+  h1{font-size:56px} .hero-copy{font-size:18px} .portrait{width:100%}
+  h2{font-size:43px} .section-copy p{font-size:17px}
+}
 
-  <style>
-    :root{
-      --paper:#f4f1ea;
-      --ink:#151515;
-      --muted:#6e6b66;
-      --line:#c9c5bd;
-      --indigo:#243a73;
-      --red:#d83a2e;
-      --card:#faf8f3;
-      --max:1320px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-
-    body{
-      margin:0;
-      background:
-        linear-gradient(rgba(21,21,21,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(21,21,21,.035) 1px, transparent 1px),
-        var(--paper);
-      background-size:32px 32px;
-      color:var(--ink);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height:1.45;
-    }
-
-    a{color:inherit;text-decoration:none}
-
-    .shell{
-      width:min(calc(100% - 48px),var(--max));
-      margin:0 auto;
-    }
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:20;
-      backdrop-filter:blur(14px);
-      background:rgba(244,241,234,.84);
-      border-bottom:1px solid rgba(21,21,21,.14);
-    }
-
-    .nav{
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-      padding:14px 0;
-    }
-
-    .brand{
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      white-space:nowrap;
-    }
-
-    .navlinks{
-      display:flex;
-      gap:22px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .navlinks a{
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--muted);
-      transition:.2s ease;
-    }
-
-    .navlinks a:hover,
-    .navlinks a[aria-current="page"]{
-      color:var(--ink);
-    }
-
-    .about-hero{
-      padding:84px 0 64px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:72px;
-      align-items:end;
-    }
-
-    .eyebrow{
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--ink);
-      font-weight:800;
-      margin-bottom:24px;
-    }
-
-    h1{
-      margin:0;
-      max-width:760px;
-      font-size:clamp(58px,7.2vw,108px);
-      line-height:.9;
-      letter-spacing:-.06em;
-      font-weight:800;
-    }
-
-    .hero-copy{
-      margin:32px 0 0;
-      max-width:650px;
-      font-size:20px;
-      color:#373532;
-    }
-
-    .portrait-wrap{
-      display:flex;
-      justify-content:flex-end;
-      align-items:flex-end;
-    }
-
-    .portrait{
-      display:block;
-      width:min(100%,480px);
-      aspect-ratio:4 / 5;
-      object-fit:cover;
-      object-position:center 28%;
-      border:1px solid var(--line);
-      background:var(--card);
-    }
-
-    .about-sections{
-      padding-bottom:80px;
-    }
-
-    .about-row{
-      min-height:330px;
-      display:grid;
-      grid-template-columns:170px .9fr 1.1fr;
-      gap:32px;
-      padding:58px 0 64px;
-      border-bottom:1px solid var(--line);
-      align-items:start;
-    }
-
-    .section-num{
-      font-size:clamp(64px,8vw,120px);
-      line-height:.8;
-      letter-spacing:-.06em;
-      font-weight:700;
-      color:transparent;
-      -webkit-text-stroke:1px var(--ink);
-      opacity:.35;
-    }
-
-    .section-heading{
-      padding-top:3px;
-    }
-
-    .label{
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-
-    .accent{
-      width:66px;
-      height:4px;
-      background:var(--red);
-      margin:26px 0;
-    }
-
-    h2{
-      margin:0;
-      max-width:470px;
-      font-size:clamp(40px,5vw,72px);
-      line-height:.95;
-      letter-spacing:-.045em;
-    }
-
-    .section-copy{
-      max-width:660px;
-      padding-top:2px;
-    }
-
-    .section-copy p{
-      margin:0;
-      font-size:clamp(18px,1.7vw,24px);
-      line-height:1.45;
-      letter-spacing:-.012em;
-      color:#373532;
-    }
-
-    .section-copy strong{
-      color:var(--ink);
-      font-weight:700;
-    }
-
-    footer{
-      padding:44px 0 72px;
-    }
-
-    .footer-grid{
-      display:flex;
-      justify-content:space-between;
-      gap:32px;
-      align-items:flex-end;
-      border-top:1px solid var(--ink);
-      padding-top:24px;
-    }
-
-    .footer-title{
-      font-size:clamp(34px,5vw,68px);
-      letter-spacing:-.045em;
-      line-height:.95;
-      font-weight:750;
-    }
-
-    .footer-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .footer-links a{
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      border-bottom:1px solid var(--ink);
-      padding-bottom:3px;
-    }
-
-    .reveal{
-      opacity:0;
-      transform:translateY(24px);
-      transition:opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.visible{
-      opacity:1;
-      transform:none;
-    }
-
-    .consent-banner{
-      position:fixed;
-      left:24px;
-      right:24px;
-      bottom:24px;
-      z-index:9999;
-      display:none;
-      max-width:760px;
-      margin:0 auto;
-      padding:20px 22px;
-      background:var(--card);
-      border:1px solid var(--ink);
-      box-shadow:0 12px 40px rgba(21,21,21,.12);
-    }
-
-    .consent-banner.is-visible{display:block}
-
-    .consent-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-    }
-
-    .consent-copy{
-      max-width:470px;
-      font-size:13px;
-      color:#373532;
-    }
-
-    .consent-copy strong{
-      display:block;
-      margin-bottom:5px;
-      color:var(--ink);
-      font-size:14px;
-    }
-
-    .consent-actions{
-      display:flex;
-      gap:10px;
-      flex-shrink:0;
-    }
-
-    .consent-btn{
-      appearance:none;
-      border:1px solid var(--ink);
-      padding:10px 14px;
-      font:inherit;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      cursor:pointer;
-      background:transparent;
-      color:var(--ink);
-    }
-
-    .consent-btn.accept{
-      background:var(--ink);
-      color:var(--paper);
-    }
-
-    @media(max-width:920px){
-      .shell{
-        width:min(calc(100% - 30px),var(--max));
-      }
-
-      .nav{
-        height:auto;
-        align-items:flex-start;
-      }
-
-      .navlinks{
-        gap:12px;
-      }
-
-      .about-hero{
-        padding:72px 0 48px;
-      }
-
-      .hero-grid{
-        grid-template-columns:1fr;
-        gap:42px;
-      }
-
-      .portrait-wrap{
-        justify-content:flex-start;
-      }
-
-      .portrait{
-        width:min(78vw,460px);
-      }
-
-      .about-row{
-        grid-template-columns:1fr;
-        gap:18px;
-        min-height:auto;
-        padding:44px 0;
-      }
-
-      .section-num{
-        font-size:64px;
-      }
-
-      .section-copy{
-        padding-top:8px;
-      }
-
-      .footer-grid{
-        align-items:flex-start;
-        flex-direction:column;
-      }
-
-      .footer-links{
-        justify-content:flex-start;
-      }
-    }
-
-    @media(max-width:560px){
-      .brand{font-size:11px}
-      .navlinks a{font-size:10px}
-      .navlinks{gap:9px}
-      h1{font-size:56px}
-      .hero-copy{font-size:18px}
-      .portrait{width:100%}
-      h2{font-size:43px}
-      .section-copy p{font-size:18px}
-    }
-
-    @media(max-width:680px){
-      .consent-banner{left:15px;right:15px;bottom:15px}
-      .consent-inner{align-items:stretch;flex-direction:column;gap:16px}
-      .consent-actions{flex-wrap:wrap}
-    }
-  </style>
+.consent-banner{position:fixed;left:24px;right:24px;bottom:24px;z-index:9999;display:none;max-width:760px;margin:0 auto;padding:20px 22px;background:var(--card);border:1px solid var(--ink);box-shadow:0 12px 40px rgba(21,21,21,.12)}
+.consent-banner.is-visible{display:block}
+.consent-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.consent-copy{max-width:470px;font-size:13px;color:#373532}
+.consent-copy strong{display:block;margin-bottom:5px;color:var(--ink);font-size:14px}
+.consent-actions{display:flex;gap:10px;flex-shrink:0}
+.consent-btn{appearance:none;border:1px solid var(--ink);padding:10px 14px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--ink)}
+.consent-btn.accept{background:var(--ink);color:var(--paper)}
+@media(max-width:680px){.consent-banner{left:15px;right:15px;bottom:15px}.consent-inner{align-items:stretch;flex-direction:column;gap:16px}.consent-actions{flex-wrap:wrap}}
+</style>
 </head>
-
 <body>
-  <div class="consent-banner" id="analytics-consent" role="dialog" aria-live="polite" aria-label="Analytics preferences">
-    <div class="consent-inner">
-      <div class="consent-copy">
-        <strong>Analytics preferences</strong>
-        I use Google Analytics to understand how visitors use this portfolio.
-        Analytics is optional and is disabled unless you accept it.
-      </div>
-      <div class="consent-actions">
-        <button class="consent-btn" id="necessary-only" type="button">Only necessary</button>
-        <button class="consent-btn accept" id="accept-analytics" type="button">Accept analytics</button>
-      </div>
+<div class="consent-banner" id="analytics-consent" role="dialog" aria-live="polite" aria-label="Analytics preferences">
+  <div class="consent-inner">
+    <div class="consent-copy"><strong>Analytics preferences</strong>I use Google Analytics to understand how visitors use this portfolio. Analytics is optional and is disabled unless you accept it.</div>
+    <div class="consent-actions">
+      <button class="consent-btn" id="necessary-only" type="button">Only necessary</button>
+      <button class="consent-btn accept" id="accept-analytics" type="button">Accept analytics</button>
     </div>
   </div>
+</div>
 
-  <header>
-    <div class="shell nav">
-      <a class="brand" href="index.html#top">ANIKÓ LUKÁCSOVICS / PORTFOLIO</a>
+<header>
+  <div class="shell nav">
+    <a class="brand" href="index.html#top">ANIKÓ LUKÁCSOVICS / PORTFOLIO</a>
+    <nav class="navlinks">
+      <a href="index.html#visual">01 Visual</a>
+      <a href="index.html#tableau">02 Tableau</a>
+      <a href="index.html#powerbi">03 Power BI</a>
+      <a href="index.html#automation">04 Automation</a>
+      <a class="active" href="about.html" aria-current="page">05 About</a>
+    </nav>
+  </div>
+</header>
 
-      <nav class="navlinks" aria-label="Primary navigation">
-        <a href="index.html#visual">01 Visual</a>
-        <a href="index.html#tableau">02 Tableau</a>
-        <a href="index.html#powerbi">03 Power BI</a>
-        <a href="index.html#automation">04 Automation</a>
-        <a href="about.html" aria-current="page">05 About</a>
-      </nav>
+<main>
+<section class="about-hero">
+  <div class="shell hero-grid">
+    <div>
+      <div class="eyebrow">About</div>
+      <h1>Some questions need a dashboard. Others need something else.</h1>
+      <p class="hero-copy">Finance and analytics came first. Visual thinking, code and automation followed — mostly because I kept getting curious about what else I could do with the same problems.</p>
     </div>
-  </header>
-
-  <main>
-    <section class="about-hero">
-      <div class="shell hero-grid">
-        <div>
-          <div class="eyebrow">About</div>
-          <h1>I’ve always worked in finance and analytics.</h1>
-          <p class="hero-copy">
-            Along the way, visual thinking, code and automation became part of how I work — without replacing the finance career that started it.
-          </p>
-        </div>
-
-        <div class="portrait-wrap">
-          <img class="portrait" src="about-aniko.jpg" alt="Portrait of Anikó Lukácsovics" />
-        </div>
-      </div>
-    </section>
-
-    <section class="about-sections shell">
-      <article class="about-row reveal">
-        <div class="section-num">01</div>
-
-        <div class="section-heading">
-          <div class="label">How I got here</div>
-          <div class="accent"></div>
-          <h2>A visual detour that stayed.</h2>
-        </div>
-
-        <div class="section-copy">
-          <p>
-            I’ve always worked in finance and analytics. At one point, I also spent two years studying graphic design.
-            I never worked as a designer, but the way I learned to think about composition and visual hierarchy stayed with me.
-          </p>
-        </div>
-      </article>
-
-      <article class="about-row reveal">
-        <div class="section-num">02</div>
-
-        <div class="section-heading">
-          <div class="label">What I like to make</div>
-          <div class="accent"></div>
-          <h2>The format follows the question.</h2>
-        </div>
-
-        <div class="section-copy">
-          <p>
-            I like projects that begin with a good question. The result might be a dashboard, an interactive piece,
-            a visual story or a small tool. The format depends on what the question needs.
-          </p>
-        </div>
-      </article>
-
-      <article class="about-row reveal">
-        <div class="section-num">03</div>
-
-        <div class="section-heading">
-          <div class="label">How I work</div>
-          <div class="accent"></div>
-          <h2>Clear, but not stripped of personality.</h2>
-        </div>
-
-        <div class="section-copy">
-          <p>
-            I like things to be clear, but not stripped of personality. I pay attention to structure, visual decisions
-            and the small details that make something worth exploring. I also genuinely enjoy <strong>coding and automation</strong>,
-            so building things myself has become an important part of the process.
-          </p>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell footer-grid">
-      <div>
-        <div class="label" style="margin-bottom:12px">Contact</div>
-        <div class="footer-title">Let’s make complex<br/>things simple.</div>
-      </div>
-
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/anikolukacsovics" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="mailto:aniko.lukacsovics@gmail.com">Email</a>
-      </div>
+    <div class="portrait-wrap">
+      <img class="portrait" src="about-aniko.jpg" alt="Portrait of Anikó Lukácsovics">
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.12 });
+<section class="about-sections shell">
+  <article class="about-row">
+    <div class="section-num">01</div>
+    <div>
+      <div class="label">How I got here</div>
+      <div class="accent"></div>
+      <h2>A side path<br>that changed<br>the view.</h2>
+    </div>
+    <div class="section-copy">
+      <p>While continuing my work in finance, I spent two years studying graphic design. That experience gave me a different way of looking at structure, hierarchy and composition — and it still shapes how I work today.</p>
+    </div>
+  </article>
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  <article class="about-row">
+    <div class="section-num">02</div>
+    <div>
+      <div class="label">What I like to make</div>
+      <div class="accent"></div>
+      <h2>The format follows the question.</h2>
+    </div>
+    <div class="section-copy">
+      <p>I like projects that begin with a good question. The result might be a dashboard, an interactive piece, a visual story or a small tool. The format depends on what the question needs.</p>
+    </div>
+  </article>
 
-  <script>
-    (function () {
-      const banner = document.getElementById('analytics-consent');
-      const acceptButton = document.getElementById('accept-analytics');
-      const necessaryButton = document.getElementById('necessary-only');
-      const storageKey = 'portfolio_analytics_consent';
-      const savedChoice = localStorage.getItem(storageKey);
+  <article class="about-row last-about-row">
+    <div class="section-num">03</div>
+    <div>
+      <div class="label">How I work</div>
+      <div class="accent"></div>
+      <h2>Clear, with room for character.</h2>
+    </div>
+    <div class="section-copy">
+      <p>I care about structure, hierarchy and the small details that make something easy to follow without making it flat. I also genuinely enjoy <strong>coding and automation</strong>, so building things myself has become an important part of how I work.</p>
+    </div>
+  </article>
+</section>
+</main>
 
-      function grantAnalytics() {
-        gtag('consent', 'update', {'analytics_storage': 'granted'});
-      }
+<footer>
+  <div class="shell footer-grid">
+    <div>
+      <div class="label" style="margin-bottom:12px">Contact</div>
+      <div class="footer-title">Let’s make complex<br>things simple.</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/anikolukacsovics" target="_blank">LinkedIn</a>
+      <a href="mailto:aniko.lukacsovics@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
 
-      function denyAnalytics() {
-        gtag('consent', 'update', {'analytics_storage': 'denied'});
-      }
-
-      if (savedChoice === 'granted') {
-        grantAnalytics();
-      } else if (savedChoice === 'denied') {
-        denyAnalytics();
-      } else {
-        banner.classList.add('is-visible');
-      }
-
-      acceptButton.addEventListener('click', function () {
-        localStorage.setItem(storageKey, 'granted');
-        grantAnalytics();
-        banner.classList.remove('is-visible');
-      });
-
-      necessaryButton.addEventListener('click', function () {
-        localStorage.setItem(storageKey, 'denied');
-        denyAnalytics();
-        banner.classList.remove('is-visible');
-      });
-    })();
-  </script>
+<script>
+(function () {
+  const banner = document.getElementById('analytics-consent');
+  const acceptButton = document.getElementById('accept-analytics');
+  const necessaryButton = document.getElementById('necessary-only');
+  const storageKey = 'portfolio_analytics_consent';
+  const savedChoice = localStorage.getItem(storageKey);
+  function grantAnalytics(){ gtag('consent','update',{'analytics_storage':'granted'}); }
+  function denyAnalytics(){ gtag('consent','update',{'analytics_storage':'denied'}); }
+  if(savedChoice==='granted') grantAnalytics();
+  else if(savedChoice==='denied') denyAnalytics();
+  else banner.classList.add('is-visible');
+  acceptButton.addEventListener('click',()=>{localStorage.setItem(storageKey,'granted');grantAnalytics();banner.classList.remove('is-visible');});
+  necessaryButton.addEventListener('click',()=>{localStorage.setItem(storageKey,'denied');denyAnalytics();banner.classList.remove('is-visible');});
+})();
+</script>
 </body>
 </html>
