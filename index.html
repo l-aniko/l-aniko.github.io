@@ -550,7 +550,11 @@
       .consent-actions{flex-wrap:wrap}
     }
 
-  </style>
+  
+/* Footer consent control: styled like the existing footer links */
+.footer-links .footer-cookie-settings{appearance:none;border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:0 0 3px;background:transparent;color:inherit;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.footer-links .footer-cookie-settings:hover,.footer-links a:hover{opacity:.65}
+</style>
 </head>
 
 <body>
@@ -899,7 +903,11 @@
         <a href="mailto:aniko.lukacsovics@gmail.com">
           Email
         </a>
-      </div>
+      
+        <a href="https://github.com/l-aniko" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <button type="button" class="footer-cookie-settings" data-cookie-settings>Cookie Settings</button>
+</div>
 
     </div>
 
@@ -958,5 +966,14 @@
     })();
   </script>
 
+
+<script>
+  document.querySelectorAll('[data-cookie-settings]').forEach(function(button){
+    button.addEventListener('click',function(){
+      var banner=document.getElementById('analytics-consent');
+      if(banner){banner.classList.add('is-visible');banner.scrollIntoView({block:'nearest'});}
+    });
+  });
+</script>
 </body>
 </html>
