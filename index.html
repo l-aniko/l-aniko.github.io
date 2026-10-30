@@ -929,51 +929,49 @@
   </script>
 
 
-  <script>
-    (function () {
-      const banner = document.getElementById('analytics-consent');
-      const acceptButton = document.getElementById('accept-analytics');
-      const necessaryButton = document.getElementById('necessary-only');
-      const storageKey = 'portfolio_analytics_consent';
-      const savedChoice = localStorage.getItem(storageKey);
+  
 
-      function grantAnalytics() {
-        gtag('consent', 'update', {'analytics_storage': 'granted'});
-      }
-      function denyAnalytics() {
-        gtag('consent', 'update', {'analytics_storage': 'denied'});
-      }
-
-      if (savedChoice === 'granted') {
-        grantAnalytics();
-      } else if (savedChoice === 'denied') {
-        denyAnalytics();
-      } else {
-        banner.classList.add('is-visible');
-      }
-
-      acceptButton.addEventListener('click', function () {
-        localStorage.setItem(storageKey, 'granted');
-        grantAnalytics();
-        banner.classList.remove('is-visible');
-      });
-
-      necessaryButton.addEventListener('click', function () {
-        localStorage.setItem(storageKey, 'denied');
-        denyAnalytics();
-        banner.classList.remove('is-visible');
-      });
-    })();
-  </script>
 
 
 <script>
-  document.querySelectorAll('[data-cookie-settings]').forEach(function(button){
-    button.addEventListener('click',function(){
-      var banner=document.getElementById('analytics-consent');
-      if(banner){banner.classList.add('is-visible');banner.scrollIntoView({block:'nearest'});}
+(function () {
+  const banner = document.getElementById('analytics-consent');
+  const accept = document.getElementById('accept-analytics');
+  const necessary = document.getElementById('necessary-only');
+  const key = 'portfolio_analytics_consent';
+  if (!banner || !accept || !necessary) return;
+
+  function choice() {
+    try { return localStorage.getItem(key); } catch (error) { return null; }
+  }
+  function setChoice(value) {
+    try { localStorage.setItem(key, value); } catch (error) {}
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: value });
+    } else {
+      window.dataLayer.push(['consent', 'update', { analytics_storage: value }]);
+    }
+    banner.classList.remove('is-visible');
+  }
+  const saved = choice();
+  if (saved === 'granted' || saved === 'denied') {
+    if (saved === 'granted') {
+      if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } else {
+    banner.classList.add('is-visible');
+  }
+  accept.addEventListener('click', function () { setChoice('granted'); });
+  necessary.addEventListener('click', function () { setChoice('denied'); });
+  document.querySelectorAll('[data-cookie-settings]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      banner.classList.add('is-visible');
+      accept.focus({ preventScroll: true });
     });
   });
+})();
 </script>
+
 </body>
 </html>
