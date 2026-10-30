@@ -801,15 +801,48 @@
     </div>
   </footer>
 
-<script>(function(){const b=document.getElementById('analytics-consent'),a=document.getElementById('accept-analytics'),n=document.getElementById('necessary-only'),k='portfolio_analytics_consent',s=localStorage.getItem(k);function g(){gtag('consent','update',{'analytics_storage':'granted'});}function d(){gtag('consent','update',{'analytics_storage':'denied'});}if(s==='granted')g();else if(s==='denied')d();else b.classList.add('is-visible');a.addEventListener('click',function(){localStorage.setItem(k,'granted');g();b.classList.remove('is-visible');});n.addEventListener('click',function(){localStorage.setItem(k,'denied');d();b.classList.remove('is-visible');});})();</script>
+
+
 
 <script>
-  document.querySelectorAll('[data-cookie-settings]').forEach(function(button){
-    button.addEventListener('click',function(){
-      var banner=document.getElementById('analytics-consent');
-      if(banner){banner.classList.add('is-visible');banner.scrollIntoView({block:'nearest'});}
+(function () {
+  const banner = document.getElementById('analytics-consent');
+  const accept = document.getElementById('accept-analytics');
+  const necessary = document.getElementById('necessary-only');
+  const key = 'portfolio_analytics_consent';
+  if (!banner || !accept || !necessary) return;
+
+  function choice() {
+    try { return localStorage.getItem(key); } catch (error) { return null; }
+  }
+  function setChoice(value) {
+    try { localStorage.setItem(key, value); } catch (error) {}
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: value });
+    } else {
+      window.dataLayer.push(['consent', 'update', { analytics_storage: value }]);
+    }
+    banner.classList.remove('is-visible');
+  }
+  const saved = choice();
+  if (saved === 'granted' || saved === 'denied') {
+    if (saved === 'granted') {
+      if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } else {
+    banner.classList.add('is-visible');
+  }
+  accept.addEventListener('click', function () { setChoice('granted'); });
+  necessary.addEventListener('click', function () { setChoice('denied'); });
+  document.querySelectorAll('[data-cookie-settings]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      banner.classList.add('is-visible');
+      accept.focus({ preventScroll: true });
     });
   });
+})();
 </script>
+
 </body>
 </html>
