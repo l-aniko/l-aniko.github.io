@@ -394,6 +394,10 @@
 .consent-banner.is-visible{display:block}.consent-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}.consent-copy{max-width:470px;font-size:13px;color:#373532}.consent-copy strong{display:block;margin-bottom:5px;color:var(--ink);font-size:14px}.consent-actions{display:flex;gap:10px;flex-shrink:0}.consent-btn{border:1px solid var(--ink);padding:10px 14px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--ink)}.consent-btn.accept{background:var(--ink);color:var(--paper)}
 @media(max-width:680px){.consent-banner{left:15px;right:15px;bottom:15px}.consent-inner{align-items:stretch;flex-direction:column;gap:16px}.consent-actions{flex-wrap:wrap}}
 
+
+/* Footer consent control: styled like the existing footer links */
+.footer-links .footer-cookie-settings{appearance:none;border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:0 0 3px;background:transparent;color:inherit;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.footer-links .footer-cookie-settings:hover,.footer-links a:hover{opacity:.65}
 </style>
 </head>
 
@@ -604,11 +608,24 @@
           Email
         </a>
 
-      </div>
+      
+        <a href="https://github.com/l-aniko" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <button type="button" class="footer-cookie-settings" data-cookie-settings>Cookie Settings</button>
+</div>
 
     </div>
   </footer>
 
 <script>(function(){const b=document.getElementById('analytics-consent'),a=document.getElementById('accept-analytics'),n=document.getElementById('necessary-only'),k='portfolio_analytics_consent',s=localStorage.getItem(k);function g(){gtag('consent','update',{'analytics_storage':'granted'});}function d(){gtag('consent','update',{'analytics_storage':'denied'});}if(s==='granted')g();else if(s==='denied')d();else b.classList.add('is-visible');a.addEventListener('click',function(){localStorage.setItem(k,'granted');g();b.classList.remove('is-visible');});n.addEventListener('click',function(){localStorage.setItem(k,'denied');d();b.classList.remove('is-visible');});})();</script>
+
+<script>
+  document.querySelectorAll('[data-cookie-settings]').forEach(function(button){
+    button.addEventListener('click',function(){
+      var banner=document.getElementById('analytics-consent');
+      if(banner){banner.classList.add('is-visible');banner.scrollIntoView({block:'nearest'});}
+    });
+  });
+</script>
 </body>
 </html>
