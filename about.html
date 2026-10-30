@@ -99,6 +99,10 @@ footer{padding:44px 0 72px}
 .consent-btn{appearance:none;border:1px solid var(--ink);padding:10px 14px;font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--ink)}
 .consent-btn.accept{background:var(--ink);color:var(--paper)}
 @media(max-width:680px){.consent-banner{left:15px;right:15px;bottom:15px}.consent-inner{align-items:stretch;flex-direction:column;gap:16px}.consent-actions{flex-wrap:wrap}}
+
+/* Footer consent control: styled like the existing footer links */
+.footer-links .footer-cookie-settings{appearance:none;border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:0 0 3px;background:transparent;color:inherit;font:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.footer-links .footer-cookie-settings:hover,.footer-links a:hover{opacity:.65}
 </style>
 </head>
 <body>
@@ -187,7 +191,11 @@ footer{padding:44px 0 72px}
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/anikolukacsovics" target="_blank">LinkedIn</a>
       <a href="mailto:aniko.lukacsovics@gmail.com">Email</a>
-    </div>
+    
+        <a href="https://github.com/l-aniko" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <button type="button" class="footer-cookie-settings" data-cookie-settings>Cookie Settings</button>
+</div>
   </div>
 </footer>
 
@@ -206,6 +214,15 @@ footer{padding:44px 0 72px}
   acceptButton.addEventListener('click',()=>{localStorage.setItem(storageKey,'granted');grantAnalytics();banner.classList.remove('is-visible');});
   necessaryButton.addEventListener('click',()=>{localStorage.setItem(storageKey,'denied');denyAnalytics();banner.classList.remove('is-visible');});
 })();
+</script>
+
+<script>
+  document.querySelectorAll('[data-cookie-settings]').forEach(function(button){
+    button.addEventListener('click',function(){
+      var banner=document.getElementById('analytics-consent');
+      if(banner){banner.classList.add('is-visible');banner.scrollIntoView({block:'nearest'});}
+    });
+  });
 </script>
 </body>
 </html>
